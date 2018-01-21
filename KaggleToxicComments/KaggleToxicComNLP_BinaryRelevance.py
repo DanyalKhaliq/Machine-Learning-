@@ -37,6 +37,7 @@ train_df['clean'].sum()
 
 print("Total comments = ",len(train_df))
 print("Total clean comments = ",train_df['clean'].sum())
+
 print("Total tags =",x.sum())
 
 #%%
