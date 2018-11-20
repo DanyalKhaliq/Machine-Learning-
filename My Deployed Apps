@@ -1,0 +1,8 @@
+*Rider Distance Optimization app (Rest API urls)
+
+https://distance-optimize.herokuapp.com/
+https://distance-optimize.herokuapp.com/best
+https://distance-optimize.herokuapp.com/plot
+
+*Product Demand Forecasting App (simplified ML Model) 
+https://demandprediction.herokuapp.com/
