@@ -1,0 +1,43 @@
+<html>
+  <head>
+   
+  </head>
+  <body>
+  
+{% block content %}
+<h2>Location to Location Distances Data</h2>
+{{ result.to_html(classes="table table-striped") | safe}}
+
+<h3> Distinct Order Locations </h3>
+{{ locations }}
+{% endblock %}
+
+</br>
+</br>
+</br>
+
+<form action="/GetBestRoutes" method="post">
+    <button name="calBestbtn" type="submit">Calc Optimal Routes</button>
+    <div>
+    <input type="checkbox" name="savedBestRoute"> Load Saved Best Routes from Previous Run </input>
+    </div>
+    
+    <div>
+    <input type="checkbox" name="isTimeOptimized"> Time Base Optimization ? Default is Distance Based </input>
+    </div>
+
+</form>
+
+<h3>Show Generation-Wise Plot</h3>
+<form action="/plot" method="post">
+    <button name="plotbtn" type="submit"> Show </button>
+</form>
+ <form action = "http://localhost:5000/uploader" method = "POST" 
+         enctype = "multipart/form-data">
+         <h3> Upload New Data File </h3>
+         <input type = "file" name = "file" />
+         <input type = "submit" />
+      </form>
+</body>
+</html>
+
