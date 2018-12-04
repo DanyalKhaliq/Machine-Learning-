@@ -1,0 +1,29 @@
+"Loc A","Loc B","Distance","Time"
+"Arpatech","Ayesha Manzil",10.2,22
+"Arpatech","Numaish",3,8
+"Arpatech","Askari",5.6,11
+"Arpatech","Clifton 2 Talwar",8.4,17
+"Ayesha Manzil","Numaish",8.2,15
+"Ayesha Manzil","Askari",7.4,15
+"Ayesha Manzil","Clifton 2 Talwar",14.8,31
+"Numaish","Askari",4.1,7
+"Numaish","Clifton 2 Talwar",7.1,17
+"Askari","Clifton 2 Talwar",11.4,23
+"Arpatech","Malir",19.2,45
+"Malir","Ayesha Manzil",20.9,55
+"Malir","Clifton 2 Talwar",24.8,63
+"Malir","Numaish",22.5,53
+"Malir","Askari",21.2,49
+"Gulshan e Iqbal","Malir",17.8,44
+"Gulshan e Iqbal","Ayesha Manzil",3.8,13
+"Gulshan e Iqbal","Clifton 2 Talwar",17.3,36
+"Gulshan e Iqbal","Numaish",8.8,18
+"Gulshan e Iqbal","Askari",5.9,12
+"Gulshan e Iqbal","Arpatech",10.2,23
+"Tariq Road","Arpatech",1.5,7
+"Tariq Road","Askari",3.7,8
+"Tariq Road","Numaish",3.2,10
+"Tariq Road","Clifton 2 Talwar",8.5,19
+"Tariq Road","Ayesha Manzil",10,24
+"Tariq Road","Malir",20,38
+"Tariq Road","Gulshan e Iqbal",8.3,20
