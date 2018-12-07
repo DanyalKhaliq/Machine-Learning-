@@ -17,7 +17,7 @@ import json
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 Data_FOLDER = os.path.join('DataDir')
-executor = ThreadPoolExecutor(2)
+executor = ThreadPoolExecutor(1)
 app = Flask(__name__)
 app.config['Data_FOLDER'] = Data_FOLDER;
 
@@ -28,53 +28,73 @@ target = os.path.join(APP_ROOT,'photo')
 full_filename = os.path.join(app.config['Data_FOLDER'], 'RiderRoutes.csv')    
 data = pd.read_csv(full_filename)
 locations = sorted(set(list(data['Loc A'].unique()) + list(data['Loc B'].unique())))
+
+best_delivery_routes = None 
 finished = False
+isTimeOptimized = None
 
 @app.route('/')
 def index():
     
+    
+    global finished
+    finished = False
+       
+    global isTimeOptimized
+    isTimeOptimized = None
+    
     return render_template("show.html",result = data, locations=locations)
 
-#def async_getOptimalDist(locations):
-    #thr = Thread(target=getOptimalDist, args=[locations])
-    #thr.start()
-    #return thr
+
 @app.route('/status')
 def thread_status():
+    global finished
     """ Return the status of the worker thread """
     return jsonify(dict(status=('finished' if finished else 'running')))
 
 @app.route('/result')
 def result():
-    
+    global best_delivery_routes
     """ Just give back the result of your heavy work """
     with open(os.path.join(app.config['Data_FOLDER'],secure_filename('data.txt')), 'w') as outfile:  
-        json.dump(best_routes, outfile)    
+        json.dump(best_delivery_routes, outfile)    
         
-    return jsonify({'Best Guess Routes': best_routes})
+    return jsonify({'Best Guess Routes': best_delivery_routes})
 
-def getOptimalDist(locations):
-    global finished
-    global fitness_tracking
-    global best_routes
-    finished = False 
-    current_generation = create_generation(locations,population=300)
-    fitness_tracking, best_guess, best_routes = evolve_to_solve(current_generation, 10, 80, 40, 0.5, 2, 5, verbose=True)
+def getOptimalDist(locationsList):
    
-    img = BytesIO()
-    sns.set()
+    global finished
+    finished = False
     
-    ax = sns.lineplot(data=pd.DataFrame(fitness_tracking))
-    ax.set(ylabel='Min Distance', xlabel='Generation')    
-    plt.savefig(os.path.join(app.config['static_folder'], 'plot.png'))
-     
+    global best_delivery_routes
+    best_delivery_routes = None
+       
+    
+    current_generation = create_generation(locationsList,population=200)
+    fitness_tracking, best_guess, best_delivery_routes = evolve_to_solve(current_generation, 5, 80, 40, 0.5, 2, 5, verbose=True)
+   
     finished = True
     
-    #return jsonify({'Best Guess Routes': best_routes ,
-                    #'Final Dist (Km)': fitness_tracking[-1]})
+    #img = BytesIO()
+    #sns.set()
+    
+    #ax = sns.lineplot(data=pd.DataFrame(fitness_tracking))
+    #ax.set(ylabel='Min Distance', xlabel='Generation')    
+    #plt.savefig(os.path.join(app.config['static_folder'], 'plot.png'))
     
 @app.route('/GetBestRoutes',methods=['GET','POST'])
 def getBestRoute():
+    #Reset the variables that matter to API functionality 
+    
+    global best_delivery_routes 
+    best_delivery_routes = None
+    
+    global finished
+    finished = False
+    
+    global isTimeOptimized
+    isTimeOptimized = None
+    
     global startPoint
     op3_checked = False
     if request.form.get("savedBestRoute"):
@@ -86,23 +106,15 @@ def getBestRoute():
         return jsonify({'Saved Routes': data}) , 201
     
     startPoint = request.args.get('startPoint')
-    locations = locations if request.args.get('locations') is None else request.args.get('locations').split(',')
-    executor.submit(getOptimalDist,locations)
-    #current_generation = create_generation(locations,population=200)
-    #fitness_tracking, best_guess, best_routes = evolve_to_solve(current_generation, 5, 60, 20, 0.5, 2, 5, verbose=True)
+    locationsToDeliver = locations if request.args.get('locations') is None else request.args.get('locations').split(',')
     
-    ##async_getOptimalDist(locations)
+    isTimeOptimized = request.args.get('timeBased')
+    executor.submit(getOptimalDist,locationsToDeliver)
     
-    #img = BytesIO()
-    #sns.set()
-    
-    #ax = sns.lineplot(data=pd.DataFrame(fitness_tracking))
-    #ax.set(ylabel='Min Distance', xlabel='Generation')    
-    #plt.savefig(os.path.join(app.config['static_folder'], 'plot.png'))
-    
-   
-    #return jsonify({'Best Guess Routes': best_routes ,
-                    #'Final Dist (Km)': fitness_tracking[-1]}), 201
+    #with ThreadPoolExecutor(max_workers=3) as executor:
+        #future = executor.submit(getOptimalDist, (locationsToDeliver))
+    #print('Setting Finished True')
+    #finished = True
     return render_template("Loading.html")
 
 def create_guess(points,startPoint='None'):
@@ -150,7 +162,7 @@ def distance_between_locations(locA,locB,TimeBased=False):
         
     cost = data[((data['Loc A'] == locA) & (data['Loc B'] == locB) | 
             (data['Loc B'] == locA) & (data['Loc A'] == locB))][colName].values[0]
-    return int(cost)
+    return float(cost)
 
 def fitness_score(guess):
     """
@@ -159,8 +171,9 @@ def fitness_score(guess):
     Lower is better.
     """
     score = 0
+    isTimeOptimized1 = None if isTimeOptimized is None else isTimeOptimized
     for ix, point_id in enumerate(guess[:-1]):
-        score += distance_between_locations(guess[ix],guess[ix+1])
+        score += distance_between_locations(guess[ix],guess[ix+1],isTimeOptimized1)
     return score
 
 def check_fitness(guesses):
