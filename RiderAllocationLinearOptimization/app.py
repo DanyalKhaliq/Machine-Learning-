@@ -10,7 +10,7 @@ app = Flask(__name__)
 def index():
     return render_template("input.html")
 
-@app.route('/postjson', methods = ['POST','GET'])
+@app.route('/postData', methods = ['POST','GET'])
 def postJsonHandler():
     #print (request.is_json)
     content = request.get_json()
