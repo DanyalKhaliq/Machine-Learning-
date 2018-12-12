@@ -15,6 +15,7 @@ from werkzeug import secure_filename
 from concurrent.futures import ThreadPoolExecutor
 import json
 
+
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 Data_FOLDER = os.path.join('DataDir')
 executor = ThreadPoolExecutor(1)
@@ -36,7 +37,6 @@ isTimeOptimized = None
 @app.route('/')
 def index():
     
-    
     global finished
     finished = False
        
@@ -50,16 +50,26 @@ def index():
 def thread_status():
     global finished
     """ Return the status of the worker thread """
-    return jsonify(dict(status=('finished' if finished else 'running')))
+    return jsonify(dict(status=('finished' if finished else 'running'),test='lol'))
 
 @app.route('/result')
 def result():
     global best_delivery_routes
     """ Just give back the result of your heavy work """
-    with open(os.path.join(app.config['Data_FOLDER'],secure_filename('data.txt')), 'w') as outfile:  
+    with open(os.path.join(app.config['Data_FOLDER'],secure_filename('data.csv')), 'w') as outfile:  
         json.dump(best_delivery_routes, outfile)    
         
     return jsonify({'Best Guess Routes': best_delivery_routes})
+
+@app.route('/GetBestDistance')
+def GetBestDistance():
+    
+    with open(os.path.join(app.config['Data_FOLDER'],secure_filename('data.csv'))) as outfile:  
+        data = json.load(outfile)       
+        
+    data.reverse()
+    
+    return jsonify({'Best Distance in KM ': data.pop()[0][1]})
 
 def getOptimalDist(locationsList):
    
