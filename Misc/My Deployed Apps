@@ -1,8 +1,14 @@
 *Rider Distance Optimization app (Rest API urls)
 
 https://distance-optimize.herokuapp.com/
-https://distance-optimize.herokuapp.com/best
-https://distance-optimize.herokuapp.com/plot
+https://distance-optimize.herokuapp.com/GetBestRoutes
+https://distance-optimize.herokuapp.com/GetBestDistance
+https://distance-optimize.herokuapp.com/GetBestRoutes?startPoint=Arpatech&locations=Arpatech,Numaish,Askari,Malir
+https://distance-optimize.herokuapp.com/GetBestRoutes?startPoint=Arpatech&locations=Arpatech,Numaish,Askari,Malir&timeBased=1
+
+*Rider Allocation Model via Linear OPtimization using Pulp Library
+https://rider-allocation-optimize.herokuapp.com/
+https://rider-allocation-optimize.herokuapp.com/postData
 
 *Product Demand Forecasting App (simplified ML Model) 
 https://demandprediction.herokuapp.com/
