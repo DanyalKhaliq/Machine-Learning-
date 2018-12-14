@@ -40,7 +40,7 @@ class DeliveryHub:
         prob += x1>=0
         prob += x2>=0
         
-        prob += self.CostRider*self.DistanceToCover*x1 + self.CostCab*self.DistanceToCover*x2, "Total Cost of fuel / km"
+        prob += self.CostRider*(self.DistanceToCover/self.MaxRiders)*x1 + self.CostCab*(self.DistanceToCover/self.MaxCabs)*x2, "Total Cost of fuel / km"
         
         
         prob.solve()
@@ -53,10 +53,11 @@ class DeliveryHub:
             
             
         #print("Total Rider & Cab Cost = ", value(prob.objective))
-        
+        actualCost = self.CostRider*(self.DistanceToCover)*int(prob.variables()[1].varValue) + self.CostCab*(self.DistanceToCover)*int(prob.variables()[0].varValue)
+                
         dictObj = {"Hub Name" : self.HubName , 
                    'Riders' : prob.variables()[1].varValue,'Cabs' : prob.variables()[0].varValue,
-                   'Total Cost' : str(value(prob.objective)), 
+                   'Total Cost' : str(actualCost), 
                    'Solution Status' : LpStatus[prob.status],
                    "Un-Used Capacity" : str(remainder)}
                    
