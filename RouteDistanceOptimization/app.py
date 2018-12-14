@@ -34,6 +34,8 @@ best_delivery_routes = None
 finished = False
 isTimeOptimized = None
 
+routeCalculations = {}
+
 @app.route('/')
 def index():
     
@@ -48,18 +50,19 @@ def index():
 
 @app.route('/status')
 def thread_status():
-    global finished
+    
+    finished = False if routeCalculations[request.args.get('Id')] is None else True
     """ Return the status of the worker thread """
-    return jsonify(dict(status=('finished' if finished else 'running'),test='lol'))
+    return jsonify(dict(status=('finished' if finished else 'running'),test='test'))
 
 @app.route('/result')
 def result():
-    global best_delivery_routes
+    global routeCalculations
     """ Just give back the result of your heavy work """
-    with open(os.path.join(app.config['Data_FOLDER'],secure_filename('data.csv')), 'w') as outfile:  
-        json.dump(best_delivery_routes, outfile)    
+    #with open(os.path.join(app.config['Data_FOLDER'],secure_filename('data.csv')), 'w') as outfile:  
+        #json.dump(best_delivery_routes, outfile)    
         
-    return jsonify({'Best Guess Routes': best_delivery_routes})
+    return jsonify({'Best Guess Routes': routeCalculations[request.args.get('Id')]})
 
 @app.route('/GetBestDistance')
 def GetBestDistance():
@@ -71,8 +74,10 @@ def GetBestDistance():
     
     return jsonify({'Best Distance in KM ': data.pop()[0][1]})
 
-def getOptimalDist(locationsList):
+def getOptimalDist(locationsList,uniqueId):
    
+    global routeCalculations
+    
     global finished
     finished = False
     
@@ -83,7 +88,9 @@ def getOptimalDist(locationsList):
     current_generation = create_generation(locationsList,population=200)
     fitness_tracking, best_guess, best_delivery_routes = evolve_to_solve(current_generation, 5, 80, 40, 0.5, 2, 5, verbose=True)
    
-    finished = True
+    routeCalculations[uniqueId] = best_delivery_routes
+    
+    #finished = True
     
     #img = BytesIO()
     #sns.set()
@@ -94,6 +101,7 @@ def getOptimalDist(locationsList):
     
 @app.route('/GetBestRoutes',methods=['GET','POST'])
 def getBestRoute():
+    import uuid
     #Reset the variables that matter to API functionality 
     
     global best_delivery_routes 
@@ -119,13 +127,18 @@ def getBestRoute():
     locationsToDeliver = locations if request.args.get('locations') is None else request.args.get('locations').split(',')
     
     isTimeOptimized = request.args.get('timeBased')
-    executor.submit(getOptimalDist,locationsToDeliver)
+    
+    uniqueId = str(uuid.uuid1()).replace('-','')
+    
+    routeCalculations[uniqueId] = None
+    
+    executor.submit(getOptimalDist,locationsToDeliver,uniqueId)
     
     #with ThreadPoolExecutor(max_workers=3) as executor:
         #future = executor.submit(getOptimalDist, (locationsToDeliver))
     #print('Setting Finished True')
     #finished = True
-    return render_template("Loading.html")
+    return render_template("Loading.html",Id=uniqueId)
 
 def create_guess(points,startPoint='None'):
     """
