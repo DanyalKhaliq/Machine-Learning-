@@ -4,16 +4,17 @@
     <script>
       $(document).ready(function() {
         var refresh_id = setInterval(function() {
+        var routeId = '{{ Id }}'
             $.get(
-              "{{ url_for('thread_status') }}",
+              "{{ url_for('thread_status') }}" + "?Id=" + routeId,
               function(data) {
                 console.log(data);
                 if (data.status == 'finished') {
-                  window.location.replace("{{ url_for('result') }}");
+                  window.location.replace("{{ url_for('result') }}" + "?Id=" + routeId);
                 }
               }
             )}
-          , 10000);
+          , 15000);
       });
     </script>
   </head>
