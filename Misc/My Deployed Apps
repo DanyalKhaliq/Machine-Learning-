@@ -6,7 +6,7 @@ https://distance-optimize.herokuapp.com/GetBestDistance
 https://distance-optimize.herokuapp.com/GetBestRoutes?startPoint=Arpatech&locations=Arpatech,Numaish,Askari,Malir
 https://distance-optimize.herokuapp.com/GetBestRoutes?startPoint=Arpatech&locations=Arpatech,Numaish,Askari,Malir&timeBased=1
 
-*Rider Allocation Model via Linear OPtimization using Pulp Library
+*Rider Allocation Model via Linear Integer Optimization using Pulp Library
 https://rider-allocation-optimize.herokuapp.com/
 https://rider-allocation-optimize.herokuapp.com/postData
 
