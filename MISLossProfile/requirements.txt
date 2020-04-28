@@ -1,0 +1,6 @@
+pandas==0.24.2
+humanize==0.5.1
+ipywidgets==7.4.2
+streamlit==0.52.2
+pyodbc==4.0.27
+numpy==1.17.3
