@@ -1,0 +1,7 @@
+streamlit==0.52.2
+opencv_python_headless==4.1.2.30
+requests==2.22.0
+detecto==1.1.2
+Flask==1.1.1
+numpy==1.17.3
+Pillow==7.0.0
