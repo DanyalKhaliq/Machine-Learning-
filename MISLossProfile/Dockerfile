@@ -13,3 +13,5 @@ RUN ACCEPT_EULA=Y apt-get -y install msodbcsql17
 RUN pip3 install -r requirements.txt
 COPY . .
 CMD streamlit run app.py
+#ENTRYPOINT ["streamlit","run", "--server.enableCORS", "false" ,"--server.port", "$PORT"]
+#CMD ["app.py"]

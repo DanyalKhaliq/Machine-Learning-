@@ -10,6 +10,7 @@ import humanize as hm
 from datetime import datetime
 import pyodbc
 from datetime import timedelta
+import base64
 
 toDate = datetime.today()
 fromDate = toDate - timedelta(days=364 + datetime.now().timetuple().tm_yday)
@@ -17,7 +18,7 @@ toDate = toDate.date()
 fromDate = fromDate.date()
 
 # fromDate = '2019-01-01'
-# toDate = '2019-12-31'
+# toDate = '2020-02-28'
 def buildFilter(dataKVP):
     s = ''
     
@@ -30,7 +31,24 @@ def buildFilter(dataKVP):
     else:
         return -1
 
+
+def get_table_download_link(df):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    in:  dataframe
+    out: href string
+    """
+    csv = df.to_csv(index=True)
+    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+    href = f'<a href="data:file/csv;base64,{b64}">Download as CSV File</a>'
+    return href
+
 def MISReport(BusinessType,SalesBranch,Channel,Make,Year,ClaimTypes,High_Claim_Details,Misc_Report,premData,claimData,claimsPaidData):
+    
+    premData.fillna(0,inplace=True)
+       
+    
+    claimData.fillna(0,inplace=True)
+       
     
     if (High_Claim_Details == False) & (Misc_Report == False):
          
@@ -42,35 +60,43 @@ def MISReport(BusinessType,SalesBranch,Channel,Make,Year,ClaimTypes,High_Claim_D
             
             if "ClaimTypes" in filter_str: ## if ClaimFilter then dont use with PremData
                 if len(filter_str.rsplit('and',1)) > 1: ## if len is 2 means other filters also selected with claimType
-                    dfp_grp = premData.query(filter_str.rsplit('and',1)[0])
-                    dfc_grp = claimData.query(filter_str)
+                    dfp_grpT = premData.query(filter_str.rsplit('and',1)[0])
+                    dfc_grpT = claimData.query(filter_str)
                 else:
-                    dfp_grp = premData
-                    dfc_grp = claimData.query(filter_str)
+                    dfp_grpT = premData
+                    dfc_grpT = claimData.query(filter_str)
             else:
-                dfp_grp = premData.query(filter_str)
-                dfc_grp = claimData.query(filter_str)
+                dfp_grpT = premData.query(filter_str)
+                dfc_grpT = claimData.query(filter_str)
         else:
-            dfp_grp = premData
-            dfc_grp = claimData
-
-        tdf_prem = dfp_grp.groupby(['Year','Make'])['Gross Premium','Policy Count'].agg(['sum']).reset_index()
-        tdf_claim = dfc_grp.groupby(['Year','Make'])['TotalClaimed','Claim Count'].agg(['sum']).reset_index()
+            dfp_grpT = premData
+            dfc_grpT = claimData
+            
+        DefaultGroupByList = ['Year','Make']
+        if Make != 'All':
+            print('Selected Makes/Models')
+            DefaultGroupByList.extend(['Model'])
+            tdf_prem = dfp_grpT.groupby(DefaultGroupByList)['Gross Premium','Policy Count'].agg(['sum']).reset_index()
+            tdf_claim = dfc_grpT.groupby(DefaultGroupByList)['TotalClaimed','Claim Count'].agg(['sum']).reset_index()
+        else:
+            tdf_prem = dfp_grpT.groupby(DefaultGroupByList)['Gross Premium','Policy Count'].agg(['sum']).reset_index()
+            tdf_claim = dfc_grpT.groupby(DefaultGroupByList)['TotalClaimed','Claim Count'].agg(['sum']).reset_index()
+            
+        print(tdf_prem['Gross Premium'].sum())
+        print(tdf_claim.TotalClaimed.sum())
 
         tdf_prem.columns = tdf_prem.columns.get_level_values(0)
         tdf_claim.columns = tdf_claim.columns.get_level_values(0)
         
-
-        tdf = tdf_prem.merge(tdf_claim.drop_duplicates(),on=['Year','Make'],how="left")
-
-        
-        #tdf = tdf.pivot(index='Make',columns='Year',values=[ 'Gross Premium','Policy Count','TotalClaimed','Claim Count'])
-        tdf = pd.pivot_table(tdf,index='Make',values=[ 'Gross Premium','Policy Count','TotalClaimed','Claim Count'],aggfunc=np.sum, margins=True)
+        if Make != 'All':## Any Make Selected specially then include Model too 
+            tdf = tdf_prem.merge(tdf_claim.drop_duplicates(),on=['Year','Make','Model'],how="left")
+            tdf = pd.pivot_table(tdf,index=['Make','Model'],values=[ 'Gross Premium','Policy Count','TotalClaimed','Claim Count'])
+        else:
+            tdf = tdf_prem.merge(tdf_claim.drop_duplicates(),on=['Year','Make'],how="left")
+            tdf = pd.pivot_table(tdf,index='Make',values=[ 'Gross Premium','Policy Count','TotalClaimed','Claim Count'],aggfunc=np.sum, margins=True)
 
         pd.options.display.float_format = '{:,.2f}'.format
 
-        #tdf=tdf.stack(level=1)
-    
         if tdf.shape[0] > 0:
             tdf['Claim Ratio%'] = (tdf['TotalClaimed'].astype(float) / tdf['Gross Premium'].astype(float)) * 100
             tdf['Claim Freq%'] = (tdf['Claim Count'].astype(float) / tdf['Policy Count'].astype(float)) * 100
@@ -78,31 +104,47 @@ def MISReport(BusinessType,SalesBranch,Channel,Make,Year,ClaimTypes,High_Claim_D
             print('No Records Found')
             return None
 
-        #tdf=tdf.unstack()
-        #tdf.reorder_levels([1,0],axis=1).sort_index(axis=1)
         tdf.fillna(0,inplace=True)
-       
+        tdf.replace(np.inf, 0, inplace=True)
         tdf = tdf.astype(int)
-        tdf = tdf.style.format('{:,}')
-        tdf = tdf.applymap(hm.intword)
-        return tdf
+        
+        columnOrder = ['Gross Premium','Policy Count','TotalClaimed','Claim Count','Claim Ratio%'
+,'Claim Freq%']
+
+        indexOrder = ['Toyota','Honda','Suzuki','Kia','Imported','Others','All']
+        if Make == 'All':
+            tdf  = tdf.reindex(columnOrder, axis=1).reindex(indexOrder,axis=0)
+        else:
+            tdf  = tdf.reset_index()
+            
+       
+
+        #tdf = tdf.style.format('{:,}')
+        
+        return tdf#.applymap(hm.intword)
     elif High_Claim_Details == True :
         values = st.slider('Select a the range of claimed amount',   200000, 3000000, (500000, 1000000),10000)
+        tdf = claimData[(claimData.TotalClaimed >= values[0]) & (claimData.TotalClaimed <= values[1]) ][claimData.columns.difference(['CircumstancesOfLoss'])]
         
-        return claimData[(claimData.TotalClaimed >= values[0]) & (claimData.TotalClaimed <= values[1]) ][claimData.columns.difference(['CircumstancesOfLoss'])]#.applymap(hm.intword)
+        for col in tdf.select_dtypes(float).columns:
+            tdf[col] = tdf[col].astype('int')
+            
+        return tdf #.applymap(hm.intword)
     else : 
-        tdf = claimsPaidData
-        #[tdf.ClaimStage == 'ClaimClose']
-        tdf['RecieptDate'] =  pd.to_datetime(tdf['RecieptDate'],errors='coerce', format='%Y-%m-%d %H:%M:%S')
-        tdf = tdf[tdf.ClaimStage != 'ClaimClose'].groupby([tdf.RecieptDate.dt.year,'PaymentHead'])['PaidAmount'].agg(['sum','count']).reset_index()
-        tdf.columns = ['RecieptDate','PaymentHead', 'Claim Sum','No of Claims']
-        tdf = tdf.pivot(index='PaymentHead',columns='RecieptDate',values=[ 'No of Claims','Claim Sum'])
-        tdf = tdf.stack(level=1)
+        tdf = claimsPaidData[['ClaimStage','PaymentHead','PaidAmount']]
+        
+        #tdf['RecieptDate'] =  pd.to_datetime(tdf['RecieptDate'],errors='coerce', format='%Y-%m-%d %H:%M:%S')
+        tdf = tdf[tdf.ClaimStage != 'ClaimClose'].groupby(['PaymentHead'])['PaidAmount'].agg(['sum','count']).reset_index()
+        print(tdf.columns)
+        tdf.columns = ['PaymentHead', 'Claim Sum','No of Claims']
+        tdf = pd.pivot_table(tdf,index='PaymentHead',values=[ 'No of Claims','Claim Sum' ])
+        #tdf = tdf.pivot(index='PaymentHead',columns='RecieptDate',values=[ 'No of Claims','Claim Sum'])
+        #tdf = tdf.stack(level=1)
         tdf = tdf.astype(int)
-        tdf = tdf.applymap(hm.intword)
+        #tdf = tdf.applymap(hm.intword)
         
         
-        return tdf
+        return tdf.reset_index()
 
 def readClaimsData():
     # Stored Procedure Create Statement
@@ -140,8 +182,6 @@ def readClaimsData():
 
     st.info('Time elapsed (hh:mm:ss.ms) {}'.format(datetime.now() - start_time))
 
-    tempDf1[(tempDf1.ClaimStage != 'ClaimClose')]#[['ClaimTypes','InsuredAmount','GrossAmount','NetAmount','PaymentAmount','Amount_Reserve','PaidTo','EstSalvage','SalvageRecovery']]
-
     df_claims = tempDf1
     df_claims['EffectiveDate'] =  pd.to_datetime(df_claims['EffectiveDate'],errors='coerce', format='%Y-%m-%d %H:%M:%S')
     df_claims['IncidentDate'] =  pd.to_datetime(df_claims['IncidentDate'],errors='coerce', format='%Y-%m-%d %H:%M:%S')
@@ -149,31 +189,19 @@ def readClaimsData():
     df_claims['IntimationDate'] =  pd.to_datetime(df_claims['IntimationDate'],errors='coerce', format='%Y-%m-%d %H:%M:%S')
     df_claims['IntimationYear'] = df_claims['IntimationDate'].dt.year
     
-    df_claims.VehicleType = 'Empty'
-    
-    df_claims.VehicleType =  np.where((df_claims.VehicleMake == 'Honda') & (df_claims['VehicleModel'].str.lower().str.contains("city|civic|civi|brv|br-v") == True), 'Local', df_claims.VehicleType)
-
-    df_claims.VehicleType =  np.where((df_claims.VehicleMake == 'Toyota') & (df_claims['VehicleModel'].str.lower().str.contains("vigo|revo|fortun|corolla") == True), 'Local', df_claims.VehicleType)
-
-    df_claims.VehicleType =  np.where((df_claims.VehicleMake == 'Kia') & (df_claims['VehicleModel'].str.lower().str.contains("carnival|picanto|sportage") == True), 'Local', df_claims.VehicleType)
-
-    df_claims.VehicleType =  np.where((df_claims.VehicleMake == 'Suzuki') & (df_claims['VehicleModel'].str.lower().str.contains("apv|baleno|bolan|ciaz|cultus|khyber|kizashi|liana|margalla|mehran|swift|wagon|alto") == True), 'Local', df_claims.VehicleType)
-
-    #df_claims.VehicleType =  np.where((df_claims['VehicleModel'].str.lower().str.contains("dayz|moov|mira es|n box|n-wagon|dazey") == True), 'Imported', df_claims.VehicleType)
-
-    df_claims.VehicleType =  np.where((df_claims['VehicleModel'].str.lower().str.contains("mp 900|m 280|power cd|rickshaw|d-max|coure|charade|bravo|jeep|lancer|pajero|potohar|prince|santro|sirus|subaru|sunny|v2|van|ravi") == True), 'Others', df_claims.VehicleType)
-    
-    df_claims.VehicleType =  np.where((df_claims['VehicleCategory'].str.lower().str.contains("commercial|motorcycle|none") == True), 'Others', df_claims.VehicleType)
-    
-    df_claims.VehicleType =  np.where((df_claims.VehicleType == 'Empty'), 'Imported', df_claims.VehicleType)
-    
-    df_claims['VehicleMake'] = np.where(df_claims.VehicleType == 'Imported', 'Imported', df_claims.VehicleMake)
-    df_claims['VehicleMake'] = np.where(df_claims.VehicleType == 'Others', 'Others', df_claims.VehicleMake)
-    
     df_claims['VehicleMake'] = np.where(df_claims.VehicleMake.isin(['Suzuki','Toyota','Honda','Kia']) == False, 'Others', df_claims['VehicleMake'])
+        
+    df_claims.VehicleType =  np.where((df_claims.VehicleMake == 'Others') & (df_claims['VehicleModel'].str.lower().str.contains("moov|mira|dazey|n-wagon") == True), 'Imported', df_claims.VehicleType)
+    df_claims.VehicleType =  np.where((df_claims.VehicleMake == 'Others') & (df_claims['VehicleModel'].str.lower().str.contains("power|rickshaw") == True), 'Others', df_claims.VehicleType)
+    df_claims['VehicleMake'] = np.where((df_claims.VehicleType.isna() == True), 'Others', df_claims.VehicleMake)
+    df_claims.VehicleType =  np.where((df_claims.VehicleType.isna() == True), 'Others', df_claims.VehicleType)
+
+    df_claims['VehicleMake'] = np.where(df_claims.VehicleType == 'Imported', 'Imported', df_claims.VehicleMake)
+    
     
     df_claims.Amount_Reserve.fillna(0,inplace=True)
     df_claims.PaidTo.fillna(0,inplace=True)
+    df_claims.EstSalvage.fillna(0,inplace=True)
     df_claims.SalvageRecovery.fillna(0,inplace=True)
     df_claims.PaymentAmount.fillna(0,inplace=True)
     df_claims.CI_Amount.fillna(0,inplace=True)
@@ -186,6 +214,7 @@ def readClaimsData():
              'PaidTo',
              'SalvageRecovery',
              'VehicleMake',
+             'VehicleModel',
              'ClaimTypes',
              'BusinessType',
              'BranchName',
@@ -193,13 +222,15 @@ def readClaimsData():
              'VehicleType',
              'CI_Amount',
              'Amount_Reserve',   
-             'ClaimNo'
+             'ClaimNo',
+             'EstSalvage'
          
             ]
 
     groupbyCols = [
-               'IntimationYear',
-               'VehicleMake',
+                 'IntimationYear',
+                 'VehicleMake',
+                 'VehicleModel',
                  'ClaimTypes',
                  'BusinessType',
                  'BranchName',
@@ -209,27 +240,27 @@ def readClaimsData():
                  'SalvageRecovery',
                  'CI_Amount',
                  'Amount_Reserve', 
-                 'ClaimNo'
+                 'ClaimNo',
+                 'EstSalvage'
                
               ]
 
-    df_claims.fillna(0,inplace=True) 
+    df_claims['VehicleType'] = np.where(df_claims.VehicleType == 0, 'Others', df_claims.VehicleType)
     
     dfc_grp = df_claims[claimCols]
 
     dfc_grp = dfc_grp.groupby(groupbyCols)['PaidTo'].agg(['sum','count']).reset_index()
-    dfc_grp['sum'] = (dfc_grp.Amount_Reserve + dfc_grp.PaidTo - dfc_grp.CI_Amount) - dfc_grp.SalvageRecovery
+    dfc_grp['sum'] = (dfc_grp.Amount_Reserve + dfc_grp.PaidTo) - (dfc_grp.SalvageRecovery + dfc_grp.EstSalvage) -  dfc_grp.CI_Amount
     dfc_grp.rename(columns={'BusinessType':'VoucherType','BranchName':'SalesBranch'}, inplace=True)
     dfc_grp['ClaimTypes'] = np.where(dfc_grp.ClaimTypes.str.strip() == 'Snatch', 'Theft', dfc_grp.ClaimTypes)
     dfc_grp['ClaimTypes'] = dfc_grp['ClaimTypes'].str.strip()
+    
+    dfc_grp['VehicleModel'] = dfc_grp.VehicleModel.str.strip()
 
-    print(dfc_grp.shape)
-
-    dfc_grp.rename(columns={'IntimationYear':'Year', 'VehicleMake':'Make', 'VehicleType': 'VehicleCategory','VoucherType':'BusinessType','LeadSource':'Channel','sum':'TotalClaimed','count':'Claim Count'}, inplace=True)
-
-
+    dfc_grp.rename(columns={'IntimationYear':'Year', 'VehicleMake':'Make','VehicleModel':'Model', 'VehicleType': 'VehicleCategory','VoucherType':'BusinessType','LeadSource':'Channel','sum':'TotalClaimed','count':'Claim Count'}, inplace=True)
 
     return dfc_grp
+
 
 def readPremiumData():
     # Stored Procedure Create Statement
@@ -265,7 +296,7 @@ def readPremiumData():
         dfCurrent = pd.read_sql_query(storedProc, conn)
         dfCurrent = pd.concat([dfCurrent,tempDf2])
         tempDf2 = dfCurrent
-
+    
     st.info('Time elapsed (hh:mm:ss.ms) {}'.format(datetime.now() - start_time))
 
     tempDf2.rename(columns={'branch': 'SalesBranch','PolicyNo':'SalesFormNo'}, inplace=True)
@@ -289,37 +320,30 @@ def readPremiumData():
 
     df_prem.dropna(subset=['VehicleMake'],inplace=True)
 
-    df_prem['test'] = df_prem.VehicleMake.map(lambda x: to_make_model(x))
+    #     df_prem['test'] = df_prem.VehicleMake.map(lambda x: to_make_model(x))
 
-    new = pd.DataFrame(df_prem['test'].tolist(), index=df_prem.index)
-    new.columns = ['Make','Model','CarYear']
+    #     new = pd.DataFrame(df_prem['test'].tolist(), index=df_prem.index)
+    #     new.columns = ['Make','Model','CarYear']
 
-    df_prem = pd.concat([df_prem, new], axis= 1)
-    df_prem.drop('test', axis=1, inplace=True)
+    #     df_prem = pd.concat([df_prem, new], axis= 1)
+    #     df_prem.drop('test', axis=1, inplace=True)
     df_prem['Make'] = np.where(df_prem.Make.isin(['Suzuki','Toyota','Honda','Kia']) == False, 'Others', df_prem['Make'])
     
-    df_prem.VehicleCategory = 'Empty'
+    df_prem.VehicleCategory =  np.where((df_prem.Make == 'Others') & (df_prem['Model'].str.lower().str.contains("moov|mira|dazey|n-wagon") == True), 'Imported', df_prem.VehicleCategory)
+    df_prem.VehicleCategory =  np.where((df_prem.Make == 'Others') & (df_prem['Model'].str.lower().str.contains("power|rickshaw") == True), 'Others', df_prem.VehicleCategory)
+    df_prem['Make'] = np.where((df_prem.VehicleCategory.isna() == True), 'Others', df_prem.Make)
+    df_prem.VehicleCategory =  np.where((df_prem.VehicleCategory.isna() == True), 'Others', df_prem.VehicleCategory)
 
-    df_prem.VehicleCategory =  np.where((df_prem.Make == 'Honda') & (df_prem['Model'].str.lower().str.contains("city|civic|civi|brv|br-v") == True), 'Local', df_prem.VehicleCategory)
-
-    df_prem.VehicleCategory =  np.where((df_prem.Make == 'Toyota') & (df_prem['Model'].str.lower().str.contains("vigo|revo|fortun|corolla") == True), 'Local', df_prem.VehicleCategory)
-
-    df_prem.VehicleCategory =  np.where((df_prem.Make == 'Kia') & (df_prem['Model'].str.lower().str.contains("carnival|picanto|sportage") == True), 'Local', df_prem.VehicleCategory)
-
-    df_prem.VehicleCategory =  np.where((df_prem.Make == 'Suzuki') & (df_prem['Model'].str.lower().str.contains("apv|baleno|bolan|ciaz|cultus|khyber|kizashi|liana|margalla|mehran|swift|wagon|alto") == True), 'Local', df_prem.VehicleCategory)
-
-    #df_prem.VehicleCategory =  np.where((df_prem['Model'].str.lower().str.contains("dayz|moov|mira es|n box|n-wagon|dazey") == True), 'Imported', df_prem.VehicleCategory)
-
-    df_prem.VehicleCategory =  np.where((df_prem['Model'].str.lower().str.contains("mp 900|m 280|power cd|rickshaw|d-max|coure|charade|bravo|jeep|lancer|pajero|potohar|prince|santro|sirus|subaru|sunny|v2|van|ravi") == True), 'Others', df_prem.VehicleCategory)
-    
-    df_prem.VehicleCategory =  np.where((df_prem['VehicleType'].str.lower().str.contains("commercial|motorcycle|none") == True), 'Others', df_prem.VehicleCategory)
-    
-    df_prem.VehicleCategory =  np.where((df_prem.VehicleCategory == 'Empty'), 'Imported', df_prem.VehicleCategory)
-    
     df_prem['Make'] = np.where(df_prem.VehicleCategory == 'Imported', 'Imported', df_prem.Make)
-    df_prem['Make'] = np.where(df_prem.VehicleCategory == 'Others', 'Others', df_prem.Make)
+    #print(df_prem[df_prem.VehicleCategory.isna()].Model.value_counts())
 
-    df_prem['Policy Count'] = df_prem.groupby(['Make','Year','VoucherType','SalesBranch','VehicleCategory','LeadSource'])['SalesFormNo'].transform('nunique')
+    df_prem['Policy Count'] = df_prem.groupby(['Make',
+                                               'Model',
+                                               'Year',
+                                               'VoucherType',
+                                               'SalesBranch',
+                                               'VehicleCategory',
+                                               'LeadSource'])['SalesFormNo'].transform('nunique')
     
 
     premCols = [
@@ -327,6 +351,7 @@ def readPremiumData():
          'Year',
          'Product',
          'Make',
+         'Model',
          'VoucherType',
          'SalesBranch',
          'Account_Name',
@@ -341,6 +366,7 @@ def readPremiumData():
     groupbyCols = [
                'Year',
                'Make',
+               'Model',
                'VoucherType',
                'SalesBranch',
                'LeadSource',
@@ -351,6 +377,8 @@ def readPremiumData():
     dfp_grp = df_prem#[premCols]
     dfp_grp = dfp_grp.groupby(groupbyCols)['VehicleGrossAmount'].agg(['sum']).reset_index()
     dfp_grp.columns = dfp_grp.columns.get_level_values(0)
+    
+    dfp_grp['Model'] = dfp_grp.Model.str.strip()
 
     dfp_grp.rename(columns={'branch': 'SalesBranch','VoucherType':'BusinessType','LeadSource':'Channel','sum':'Gross Premium','count':'Policy Count'}, inplace=True)
 
@@ -386,10 +414,6 @@ def to_make_model(s):
     model = s[len(make):-4]
     year  = s[-4:]
     return make, model, year
-
-st.markdown('## MIS Loss Profile Interactive Report')
-#st.markdown('#### Data from 2019 to 2020 March')
-
 
 import os 
 ClaimDatafilePath = './pickle/claimData.pickle'
@@ -448,8 +472,6 @@ else:
         st.info('ClaimsVendorFile Written')
         pickle.dump(dfClaimsPaid, f)
 
-# print(dfp_grp.columns)
-# print(dfc_grp.columns)
 
 
 #######################VehicleCategory#############################
@@ -492,11 +514,21 @@ optionsYearList = st.sidebar.selectbox('Select Year',yearList)
 High_Claim_Details = st.sidebar.checkbox('High_Claim_Details')
 Misc_Report = st.sidebar.checkbox('Misc_Report')
 
-
+if (High_Claim_Details == False) & (Misc_Report == False):
+    st.markdown('### MIS Loss Profile Interactive Report for year : ' + str(optionsYearList) )
+elif High_Claim_Details == True:
+    st.markdown('### All High Claims Records : ')
+else:
+    st.markdown('### Vendor Paid Details : ')
+    
 
 with st.spinner('Processing...'):
     data = MISReport(BusinessType=optionsBT,SalesBranch=optionsBR,ClaimTypes=optionsCT
     ,Channel=optionsCHT,Make=optionsVMT,Year=optionsYearList, High_Claim_Details=High_Claim_Details
     ,Misc_Report=Misc_Report,premData=dfp_grp,claimData=dfc_grp,claimsPaidData=dfClaimsPaid)
 
+st.markdown(get_table_download_link(data), unsafe_allow_html=True)
+
+data = data.style.format('{:,}',data.select_dtypes(int).columns)
 data
+
