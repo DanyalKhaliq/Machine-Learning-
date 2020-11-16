@@ -6,14 +6,14 @@ import os
 
 class APIClass:
     
-    uid = "chatbot@lifeapp.com" 
-    pwd = "LifeChatBot2020**"
+    uid = "" 
+    pwd = ""
 
 #############################################Get Token ################################################################
 
     def getToken(self):
 
-        url = "https://uat-api.tpllife.com/token?"
+        url = ""
         tokenFile = "data.txt"
 
         if os.path.exists(tokenFile):
@@ -29,7 +29,7 @@ class APIClass:
             if expiredate > todayDate:
                 return "Bearer " + data['access_token']
 
-        payload = 'grant_type=password&password=LifeChatBot2020**&username=chatbot@lifeapp.com'
+        payload = 'grant_type=password&password=&username='
         headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded'
