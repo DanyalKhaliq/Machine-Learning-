@@ -1,0 +1,230 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- inform
+- policy_buy
+- claim
+- thankyou
+- out_of_scope
+- greet
+- goodbye
+- affirm
+- deny
+- bot_challenge
+- digital_policy
+- date
+entities:
+- gender
+- digital
+- cnic
+- mobile
+- cdate
+- dob
+slots:
+  accidentdate:
+    type: unfeaturized
+  address:
+    type: unfeaturized
+  card:
+    type: unfeaturized
+  cdate:
+    type: unfeaturized
+  city:
+    type: unfeaturized
+  claimamount:
+    type: unfeaturized
+  cnic:
+    type: unfeaturized
+  digital:
+    type: unfeaturized
+  dischargedate:
+    type: unfeaturized
+  disease:
+    type: unfeaturized
+  dob:
+    type: unfeaturized
+  email:
+    type: unfeaturized
+  fname:
+    type: unfeaturized
+  formfill:
+    type: unfeaturized
+  gender:
+    type: unfeaturized
+  hospital:
+    type: unfeaturized
+  insuredname:
+    type: unfeaturized
+  lname:
+    type: unfeaturized
+  mobile:
+    type: unfeaturized
+  province:
+    type: unfeaturized
+  quantity:
+    type: unfeaturized
+  time:
+    type: unfeaturized
+responses:
+  utter_greet:
+  - text: Hey! welcome to TPL's Navimate , I am your assistant
+  utter_greetname:
+  - text: So, How can I help you ! {fname}
+  utter_goodbye:
+  - text: Take care , we will get back to you soon on your contact {mobile}. Good
+      Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_confirmpolicy:
+  - text: You want to by the {digital} policy ? {fname}
+  utter_ask_fname:
+  - text: can you please type in your First name please ?
+  utter_ask_lname:
+  - text: can you please type in your Last name please ?
+  utter_ask_cnic:
+  - text: Your CNIC please (in format like 42101-34566213-9) ?
+  utter_ask_city:
+  - text: City you belong to ?
+  utter_ask_province:
+  - buttons:
+    - payload: '/inform{"province": "Sindh"}'
+      title: Sindh
+    - payload: '/inform{"province": "Punjab"}'
+      title: Punjab
+    - payload: '/inform{"province": "Baluchistan"}'
+      title: Baluchistans
+    - payload: '/inform{"province": "KPK"}'
+      title: KPK
+    - payload: '/inform{"province": "GB"}'
+      title: Gilgit Baltistan
+    - payload: '/inform{"province": "AJK"}'
+      title: Azak Kashmir
+    text: Province you belong to ?
+  utter_ask_gender:
+  - buttons:
+    - payload: '/inform{"gender": "Male"}'
+      title: Male
+    - payload: '/inform{"gender": "Female"}'
+      title: Female
+    text: are you Male or Female ?
+  utter_ask_digital:
+  - buttons:
+    - payload: Mosquito
+      title: Mosquito
+    - payload: Water
+      title: Water
+    - payload: Hybrid
+      title: Hybrid
+    text: Please select the policy you are interested in ?
+  utter_Mosquitolink:
+  - text: Mosquito Shield - https://www.tpllife.com/digital-insurance/mosquito-shield/
+  utter_Waterlink:
+  - text: Water Shield - https://www.tpllife.com/digital-insurance/water-shield/
+  utter_Hyperlink:
+  - text: Hyper Shield - https://www.tpllife.com/digital-insurance/hyper-shield/
+  utter_ask_mobile:
+  - text: Please type your cell number (in format 0300-34560000)?
+  utter_ask_disease:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Are you currently suffering from malaria, Dengue, Chikungunya, Yellow Fever
+      ?
+  utter_ask_hospital:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Are you currently hospitalized or being treated or being investigated for
+      any of these diseases ?
+  utter_ask_formfill:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Would you like to fill the online form yourself or would like me to fill
+      it for you?
+  utter_ask_dob:
+  - text: What is you date of birth in format (Year/Month/Day)?
+  utter_ask_cdate:
+  - text: What is you CNIC issue date (Year/Month/Day)?
+  utter_ask_address:
+  - text: Your current home address ?
+  utter_ask_email:
+  - text: Please type your Email address ?
+  utter_ask_quantity:
+  - text: Number of policies you want to purchase ? \n (type a Number)
+  utter_slots_values:
+  - text: "You've submitted the following information:\n - First Name: {fname}\n -\
+      \ Last Name: {lname}\n - Gender: {gender}\n - City: {city}\n - CNIC: {cnic}\n\
+      \ - DoB: {dob}\n - CNIC Date: {cdate}\n - Mobile: {mobile}\n - Address: {address}\n\
+      \ - E-mail: {email}\n - Province: {province}\n - Quantity: {quantity}"
+  utter_slots_values_claims:
+  - text: "You've submitted the following information:\n - Insured Name: {insuredname}\n\
+      \ - Discharge Date: {dischargedate}\n - Accident Date: {accidentdate}\n - CNIC:\
+      \ {cnic}\n - Claim Amount: {claimamount}"
+  utter_insurance_values:
+  - text: "Want to know more about our services ? Type the Insurance name or Number\
+      \ Selection:\n * 1 - Life Insurance \n * 2 - Car Insurance \n * 3 - Mobile Insurance"
+  utter_no_worries:
+  - text: No problem :)
+  utter_ask_continue:
+  - text: Sorry, I don't quite understand. Do you want to continue?
+  utter_ask_insuredname:
+  - text: Name of the insured ?
+  utter_ask_accidentdate:
+  - text: Date of incident in format (Year/Month/Day) ?
+  utter_ask_dischargedate:
+  - text: Date of Discharge from hospital in format (Year/Month/Day) ?
+  utter_ask_claimamount:
+  - text: Enter Claim Amount in PKR (only digits)
+  utter_ask_card:
+  - text: Enter Card Number
+  utter_help:
+  - text: "I can help you with your TPL Insurance related matters below . \nYou can\
+      \ ask me things like: \n- Buy a new policy? \n- Start a Claim process"
+actions:
+- utter_greet
+- utter_goodbye
+- utter_iamabot
+- utter_ask_fname
+- utter_ask_lname
+- utter_ask_cnic
+- utter_ask_city
+- utter_ask_province
+- utter_ask_gender
+- utter_ask_mobile
+- utter_ask_dob
+- utter_ask_cdate
+- utter_ask_address
+- utter_ask_email
+- utter_ask_quantity
+- utter_slots_values
+- utter_insurance_values
+- utter_no_worries
+- utter_ask_continue
+- utter_ask_insuredname
+- utter_ask_accidentdate
+- utter_ask_dischargedate
+- utter_ask_claimamount
+- utter_help
+- utter_slots_values_claims
+- utter_ask_card
+- utter_ask_digital
+- utter_greetname
+- utter_ask_confirmpolicy
+- utter_Mosquitolink
+- utter_Waterlink
+- utter_Hyperlink
+- utter_ask_disease
+- utter_ask_hospital
+- utter_ask_formfill
+- action_check_digital
+forms:
+- common_form
+- policy_form

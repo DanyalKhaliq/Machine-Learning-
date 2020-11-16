@@ -1,0 +1,38 @@
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+language: en
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier
+    epochs: 100
+  - name: EntitySynonymMapper
+  - name: ResponseSelector
+    epochs: 100
+  # - name: "DucklingHTTPExtractor"
+  # url of the running duckling server
+  #  url: "http://0.0.0.0:8000"
+  # dimensions to extract
+  #  dimensions: ["time", "number", "amount-of-money", "distance"]
+  # allows you to configure the locale, by default the language is
+  # used
+  #  locale: "NL_Nothing"
+  # if not set the default timeout of duckling http url is set to 3 seconds.
+  #  timeout : 3
+
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+  - name: MemoizationPolicy
+    max_history: 50
+  - name: TEDPolicy
+    max_history: 10
+    epochs: 50
+  - name: MappingPolicy 
+  - name: FormPolicy
