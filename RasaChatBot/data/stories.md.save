@@ -1,0 +1,45 @@
+## happy path
+* greet
+  - utter_greet
+* mood_great
+  - utter_happy
+
+## sad path 1
+* greet
+  - utter_greet
+* mood_unhappy
+  - utter_cheer_up
+  - utter_did_that_help
+* affirm
+  - utter_happy
+
+## sad path 2
+* greet
+  - utter_greet
+* mood_unhappy
+  - utter_cheer_up
+  - utter_did_that_help
+* deny
+  - utter_goodbye
+
+## say goodbye
+* goodbye
+  - utter_goodbye
+
+## bot challenge
+* bot_challenge
+  - utter_iamabot
+
+## claim story
+* greet
+    - utter_greet
+* claim_new
+    - utter_help_with_that
+* give_name{"name": "Dundas"}
+    - utter_policy_lookup
+* incident_date{"year": "2019"}
+    - 
+* incident_date{"month": "May", "day": "25", "year": "2019"}
+    - utter_incident_details
+* incident_details
+    - utter_goodbye
