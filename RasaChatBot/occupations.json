@@ -1,0 +1,1519 @@
+{
+  "Occupation": [
+    {
+      "Id": 601,
+      "Category": "A",
+      "Desc": "PROSPECTOR"
+    },
+    {
+      "Id": 602,
+      "Category": "A",
+      "Desc": "SOCIAL ASSISTANT"
+    },
+    {
+      "Id": 603,
+      "Category": "A",
+      "Desc": "BABY-SITTER"
+    },
+    {
+      "Id": 604,
+      "Category": "A",
+      "Desc": "UNIVERSITY TEACHER"
+    },
+    {
+      "Id": 605,
+      "Category": "A",
+      "Desc": "MISCEKKANEOUS"
+    },
+    {
+      "Id": 606,
+      "Category": "A",
+      "Desc": "VETERINARY"
+    },
+    {
+      "Id": 607,
+      "Category": "A",
+      "Desc": "Unknown"
+    },
+    {
+      "Id": 608,
+      "Category": "A",
+      "Desc": "ADMINISTRATIVE FUNCTIONS"
+    },
+    {
+      "Id": 609,
+      "Category": "A",
+      "Desc": "COMPANY OWNER"
+    },
+    {
+      "Id": 610,
+      "Category": "A",
+      "Desc": "CHIEF EXECUTIVE OFFICER"
+    },
+    {
+      "Id": 611,
+      "Category": "A",
+      "Desc": "GENERAL MANAGER"
+    },
+    {
+      "Id": 612,
+      "Category": "A",
+      "Desc": "MANAGER"
+    },
+    {
+      "Id": 613,
+      "Category": "A",
+      "Desc": "HUMAN RESOURCE"
+    },
+    {
+      "Id": 614,
+      "Category": "A",
+      "Desc": "SUPERVISOR"
+    },
+    {
+      "Id": 615,
+      "Category": "A",
+      "Desc": "COLLECTOR"
+    },
+    {
+      "Id": 616,
+      "Category": "A",
+      "Desc": "CASHIER"
+    },
+    {
+      "Id": 617,
+      "Category": "A",
+      "Desc": "ASSISTANT MANAGER"
+    },
+    {
+      "Id": 618,
+      "Category": "A",
+      "Desc": "ADMINISTRATIVE EMPLOYEE"
+    },
+    {
+      "Id": 619,
+      "Category": "A",
+      "Desc": "MARKETING OFFICER"
+    },
+    {
+      "Id": 620,
+      "Category": "A",
+      "Desc": "ACCOUNTANT"
+    },
+    {
+      "Id": 621,
+      "Category": "A",
+      "Desc": "COMPUTER ANALYST AND PROGRAMMER"
+    },
+    {
+      "Id": 622,
+      "Category": "A",
+      "Desc": "COMPUTER ENGINEER"
+    },
+    {
+      "Id": 623,
+      "Category": "A",
+      "Desc": "SECRETARY"
+    },
+    {
+      "Id": 624,
+      "Category": "A",
+      "Desc": "OFFICE BOY"
+    },
+    {
+      "Id": 625,
+      "Category": "A",
+      "Desc": "PUBLIC RELATIONS OFFICER"
+    },
+    {
+      "Id": 626,
+      "Category": "A",
+      "Desc": "DESIGNER"
+    },
+    {
+      "Id": 627,
+      "Category": "A",
+      "Desc": "COMPOSITOR"
+    },
+    {
+      "Id": 628,
+      "Category": "A",
+      "Desc": "PRODUCER"
+    },
+    {
+      "Id": 629,
+      "Category": "A",
+      "Desc": "ACTOR"
+    },
+    {
+      "Id": 630,
+      "Category": "A",
+      "Desc": "DANCER"
+    },
+    {
+      "Id": 631,
+      "Category": "A",
+      "Desc": "DANCING TEACHER"
+    },
+    {
+      "Id": 632,
+      "Category": "A",
+      "Desc": "PAINTER"
+    },
+    {
+      "Id": 633,
+      "Category": "A",
+      "Desc": "WRITER - AUTHOR"
+    },
+    {
+      "Id": 634,
+      "Category": "A",
+      "Desc": "GRAPHIC DESIGNER"
+    },
+    {
+      "Id": 635,
+      "Category": "A",
+      "Desc": "STYLIST"
+    },
+    {
+      "Id": 636,
+      "Category": "A",
+      "Desc": "PHOTOGRAPHER"
+    },
+    {
+      "Id": 637,
+      "Category": "A",
+      "Desc": "MODEL"
+    },
+    {
+      "Id": 638,
+      "Category": "A",
+      "Desc": "ARCHITECT"
+    },
+    {
+      "Id": 639,
+      "Category": "A",
+      "Desc": "INTERIOR DESIGNER"
+    },
+    {
+      "Id": 640,
+      "Category": "A",
+      "Desc": "DRAWER"
+    },
+    {
+      "Id": 641,
+      "Category": "A",
+      "Desc": "TOPOGRAPH"
+    },
+    {
+      "Id": 642,
+      "Category": "A",
+      "Desc": "CONCIERGE"
+    },
+    {
+      "Id": 643,
+      "Category": "A",
+      "Desc": "HOUSEKEEPER"
+    },
+    {
+      "Id": 644,
+      "Category": "A",
+      "Desc": "DOMESTIC HELPER"
+    },
+    {
+      "Id": 645,
+      "Category": "A",
+      "Desc": "MAYOR"
+    },
+    {
+      "Id": 646,
+      "Category": "A",
+      "Desc": "DIPLOMAT"
+    },
+    {
+      "Id": 647,
+      "Category": "A",
+      "Desc": "MINISTER"
+    },
+    {
+      "Id": 648,
+      "Category": "A",
+      "Desc": "DEPUTY"
+    },
+    {
+      "Id": 649,
+      "Category": "A",
+      "Desc": "AMBASSADOR"
+    },
+    {
+      "Id": 650,
+      "Category": "A",
+      "Desc": "CONSUL"
+    },
+    {
+      "Id": 651,
+      "Category": "A",
+      "Desc": "GENERAL"
+    },
+    {
+      "Id": 652,
+      "Category": "A",
+      "Desc": "COLONEL"
+    },
+    {
+      "Id": 653,
+      "Category": "A",
+      "Desc": "MAJOR"
+    },
+    {
+      "Id": 654,
+      "Category": "A",
+      "Desc": "CUSTOMS OFFICER"
+    },
+    {
+      "Id": 655,
+      "Category": "A",
+      "Desc": "UNIVERSITY DIRECTOR"
+    },
+    {
+      "Id": 656,
+      "Category": "A",
+      "Desc": "UNIVERSITY PROFESSOR"
+    },
+    {
+      "Id": 657,
+      "Category": "A",
+      "Desc": "STUDENT"
+    },
+    {
+      "Id": 658,
+      "Category": "A",
+      "Desc": "SCHOOL DIRECTOR"
+    },
+    {
+      "Id": 659,
+      "Category": "A",
+      "Desc": "SCHOOL TEACHER"
+    },
+    {
+      "Id": 660,
+      "Category": "A",
+      "Desc": "KINDERGARDEN TEACHER"
+    },
+    {
+      "Id": 661,
+      "Category": "A",
+      "Desc": "HOTEL OWNER"
+    },
+    {
+      "Id": 662,
+      "Category": "A",
+      "Desc": "HOTEL SUPERVISOR"
+    },
+    {
+      "Id": 663,
+      "Category": "A",
+      "Desc": "BUTLER"
+    },
+    {
+      "Id": 664,
+      "Category": "A",
+      "Desc": "RESTAURANT OWNER"
+    },
+    {
+      "Id": 665,
+      "Category": "A",
+      "Desc": "SUPERMARKET OWNER"
+    },
+    {
+      "Id": 666,
+      "Category": "A",
+      "Desc": "INDUSTRY OWNER"
+    },
+    {
+      "Id": 667,
+      "Category": "A",
+      "Desc": "PRINTER"
+    },
+    {
+      "Id": 668,
+      "Category": "A",
+      "Desc": "PETROL STATION OWNER"
+    },
+    {
+      "Id": 669,
+      "Category": "A",
+      "Desc": "TRAVELLING AGENT"
+    },
+    {
+      "Id": 670,
+      "Category": "A",
+      "Desc": "TOURIST GUIDE"
+    },
+    {
+      "Id": 671,
+      "Category": "A",
+      "Desc": "CINEMA OWNER"
+    },
+    {
+      "Id": 672,
+      "Category": "A",
+      "Desc": "TV STATION EMPLOYEE"
+    },
+    {
+      "Id": 673,
+      "Category": "A",
+      "Desc": "NEWSREADER/PRESENTER"
+    },
+    {
+      "Id": 674,
+      "Category": "A",
+      "Desc": "RADIO EMPLOYEE"
+    },
+    {
+      "Id": 675,
+      "Category": "A",
+      "Desc": "RADIO ANNOUNCER"
+    },
+    {
+      "Id": 676,
+      "Category": "A",
+      "Desc": "NEWSPAPER OR MAGAZINE EMPLOYEE"
+    },
+    {
+      "Id": 677,
+      "Category": "A",
+      "Desc": "JOURNALIST"
+    },
+    {
+      "Id": 678,
+      "Category": "A",
+      "Desc": "EDITOR"
+    },
+    {
+      "Id": 679,
+      "Category": "A",
+      "Desc": "ADVERTISER"
+    },
+    {
+      "Id": 680,
+      "Category": "A",
+      "Desc": "VIDEO CLUB OWNER"
+    },
+    {
+      "Id": 681,
+      "Category": "A",
+      "Desc": "TRANSLATOR"
+    },
+    {
+      "Id": 682,
+      "Category": "A",
+      "Desc": "DENTIST"
+    },
+    {
+      "Id": 683,
+      "Category": "A",
+      "Desc": "OPTICIAN"
+    },
+    {
+      "Id": 684,
+      "Category": "A",
+      "Desc": "PSYCHOLOGIST"
+    },
+    {
+      "Id": 685,
+      "Category": "A",
+      "Desc": "SOCIOLOGIST"
+    },
+    {
+      "Id": 686,
+      "Category": "A",
+      "Desc": "MID-WIFE"
+    },
+    {
+      "Id": 687,
+      "Category": "A",
+      "Desc": "PHARMACIST"
+    },
+    {
+      "Id": 688,
+      "Category": "A",
+      "Desc": "BEAUTICIAN"
+    },
+    {
+      "Id": 689,
+      "Category": "A",
+      "Desc": "PUBLIC ADMINISTRATION"
+    },
+    {
+      "Id": 690,
+      "Category": "A",
+      "Desc": "JUDGE"
+    },
+    {
+      "Id": 691,
+      "Category": "A",
+      "Desc": "NOTARY"
+    },
+    {
+      "Id": 692,
+      "Category": "A",
+      "Desc": "CIVIL SERVANT"
+    },
+    {
+      "Id": 693,
+      "Category": "A",
+      "Desc": "BAILIFF"
+    },
+    {
+      "Id": 694,
+      "Category": "A",
+      "Desc": "SERVICES AND FINANCES"
+    },
+    {
+      "Id": 695,
+      "Category": "A",
+      "Desc": "BANK MANAGER"
+    },
+    {
+      "Id": 696,
+      "Category": "A",
+      "Desc": "BANK EMPLOYEE"
+    },
+    {
+      "Id": 697,
+      "Category": "A",
+      "Desc": "MONEY CHANGER / EXCHANGE"
+    },
+    {
+      "Id": 698,
+      "Category": "A",
+      "Desc": "INSURANCE MANAGER"
+    },
+    {
+      "Id": 699,
+      "Category": "A",
+      "Desc": "INSURANCE AGENT"
+    },
+    {
+      "Id": 700,
+      "Category": "A",
+      "Desc": "INSURANCE EMPLOYEE"
+    },
+    {
+      "Id": 701,
+      "Category": "A",
+      "Desc": "SURVEYOR"
+    },
+    {
+      "Id": 702,
+      "Category": "A",
+      "Desc": "BROKER"
+    },
+    {
+      "Id": 703,
+      "Category": "A",
+      "Desc": "ACTUARY AND STATISTICIAN"
+    },
+    {
+      "Id": 704,
+      "Category": "A",
+      "Desc": "AUDITOR"
+    },
+    {
+      "Id": 705,
+      "Category": "A",
+      "Desc": "ECONOMIST"
+    },
+    {
+      "Id": 706,
+      "Category": "A",
+      "Desc": "CONSULTANT"
+    },
+    {
+      "Id": 707,
+      "Category": "A",
+      "Desc": "REAL ESTATE AGENT"
+    },
+    {
+      "Id": 708,
+      "Category": "A",
+      "Desc": "LAWYER"
+    },
+    {
+      "Id": 709,
+      "Category": "A",
+      "Desc": "ATTORNEY AT LAW"
+    },
+    {
+      "Id": 710,
+      "Category": "A",
+      "Desc": "DISTRICT ATTORNEY"
+    },
+    {
+      "Id": 711,
+      "Category": "A",
+      "Desc": "TAX INSPECTOR"
+    },
+    {
+      "Id": 712,
+      "Category": "A",
+      "Desc": "MAGISTRATE"
+    },
+    {
+      "Id": 713,
+      "Category": "A",
+      "Desc": "BUSINESSMAN"
+    },
+    {
+      "Id": 714,
+      "Category": "A",
+      "Desc": "BUSINESSWOMAN"
+    },
+    {
+      "Id": 715,
+      "Category": "A",
+      "Desc": "MERCHANT"
+    },
+    {
+      "Id": 716,
+      "Category": "A",
+      "Desc": "SHOP OWNER"
+    },
+    {
+      "Id": 717,
+      "Category": "A",
+      "Desc": "STORE KEEPER"
+    },
+    {
+      "Id": 718,
+      "Category": "A",
+      "Desc": "JEWELLER"
+    },
+    {
+      "Id": 719,
+      "Category": "A",
+      "Desc": "LIBRARIAN"
+    },
+    {
+      "Id": 720,
+      "Category": "A",
+      "Desc": "ANTIQUARY"
+    },
+    {
+      "Id": 721,
+      "Category": "A",
+      "Desc": "FLORIST"
+    },
+    {
+      "Id": 722,
+      "Category": "A",
+      "Desc": "SALESPERSON"
+    },
+    {
+      "Id": 723,
+      "Category": "A",
+      "Desc": "TRADER"
+    },
+    {
+      "Id": 724,
+      "Category": "A",
+      "Desc": "EST. OWNER"
+    },
+    {
+      "Id": 725,
+      "Category": "A",
+      "Desc": "CAR DEALER"
+    },
+    {
+      "Id": 726,
+      "Category": "A",
+      "Desc": "GROUND HOSTESS"
+    },
+    {
+      "Id": 727,
+      "Category": "A",
+      "Desc": "AIRPORT STAFF"
+    },
+    {
+      "Id": 728,
+      "Category": "A",
+      "Desc": "FORWARDING AGENT"
+    },
+    {
+      "Id": 729,
+      "Category": "A",
+      "Desc": "TRANSP. OFFICER"
+    },
+    {
+      "Id": 730,
+      "Category": "A",
+      "Desc": "OTHERS"
+    },
+    {
+      "Id": 731,
+      "Category": "A",
+      "Desc": "CLERGY MAN"
+    },
+    {
+      "Id": 732,
+      "Category": "A",
+      "Desc": "HOUSEWIFE"
+    },
+    {
+      "Id": 733,
+      "Category": "A",
+      "Desc": "UNEMPLOYED"
+    },
+    {
+      "Id": 734,
+      "Category": "A",
+      "Desc": "TELEPHONE OPERATOR"
+    },
+    {
+      "Id": 735,
+      "Category": "A",
+      "Desc": "LECTURER"
+    },
+    {
+      "Id": 736,
+      "Category": "A",
+      "Desc": "METEOROLOGIST"
+    },
+    {
+      "Id": 737,
+      "Category": "A",
+      "Desc": "LOCKSMITH"
+    },
+    {
+      "Id": 738,
+      "Category": "A",
+      "Desc": "MEDICAL PRACTITIONER"
+    },
+    {
+      "Id": 739,
+      "Category": "A",
+      "Desc": "GENERAL PRACTITIONER"
+    },
+    {
+      "Id": 740,
+      "Category": "A",
+      "Desc": "CARDIOLOGIST"
+    },
+    {
+      "Id": 741,
+      "Category": "A",
+      "Desc": "GYNECOLOGIST"
+    },
+    {
+      "Id": 742,
+      "Category": "A",
+      "Desc": "NURSERY"
+    },
+    {
+      "Id": 743,
+      "Category": "A",
+      "Desc": "OWNER OF ELECTRIC APPLIANCES SHOP"
+    },
+    {
+      "Id": 744,
+      "Category": "A",
+      "Desc": "TILER"
+    },
+    {
+      "Id": 745,
+      "Category": "A",
+      "Desc": "CAR ACCIDENT EXPERT"
+    },
+    {
+      "Id": 746,
+      "Category": "A",
+      "Desc": "RETIRED"
+    },
+    {
+      "Id": 747,
+      "Category": "A",
+      "Desc": "FREE JOB"
+    },
+    {
+      "Id": 748,
+      "Category": "A",
+      "Desc": "CLERK"
+    },
+    {
+      "Id": 749,
+      "Category": "A",
+      "Desc": "NUN"
+    },
+    {
+      "Id": 750,
+      "Category": "A",
+      "Desc": "NUTRITION SPECIALIST"
+    },
+    {
+      "Id": 751,
+      "Category": "B",
+      "Desc": "MOVIE DIRECTOR"
+    },
+    {
+      "Id": 752,
+      "Category": "B",
+      "Desc": "WATCHMAKER"
+    },
+    {
+      "Id": 753,
+      "Category": "B",
+      "Desc": "LAUNDRY"
+    },
+    {
+      "Id": 754,
+      "Category": "B",
+      "Desc": "DECORATOR"
+    },
+    {
+      "Id": 755,
+      "Category": "B",
+      "Desc": "GLAZIER"
+    },
+    {
+      "Id": 756,
+      "Category": "B",
+      "Desc": "WORKER/LABORER"
+    },
+    {
+      "Id": 757,
+      "Category": "B",
+      "Desc": "AGRICULTURER"
+    },
+    {
+      "Id": 758,
+      "Category": "B",
+      "Desc": "AGRICULTURE INSPECTOR"
+    },
+    {
+      "Id": 759,
+      "Category": "B",
+      "Desc": "GARDENER"
+    },
+    {
+      "Id": 760,
+      "Category": "B",
+      "Desc": "AGRICULTURE  ENGINEER"
+    },
+    {
+      "Id": 761,
+      "Category": "B",
+      "Desc": "FARM OWNER"
+    },
+    {
+      "Id": 762,
+      "Category": "B",
+      "Desc": "MUSICIAN"
+    },
+    {
+      "Id": 763,
+      "Category": "B",
+      "Desc": "AUDIO - VIDEO - OPERATOR"
+    },
+    {
+      "Id": 764,
+      "Category": "B",
+      "Desc": "SINGER"
+    },
+    {
+      "Id": 765,
+      "Category": "B",
+      "Desc": "SCULPTOR"
+    },
+    {
+      "Id": 766,
+      "Category": "B",
+      "Desc": "HAIR DRESSER"
+    },
+    {
+      "Id": 767,
+      "Category": "B",
+      "Desc": "CONTRACTOR"
+    },
+    {
+      "Id": 768,
+      "Category": "B",
+      "Desc": "CIVIL ENGINEER"
+    },
+    {
+      "Id": 769,
+      "Category": "B",
+      "Desc": "ENGINEER"
+    },
+    {
+      "Id": 770,
+      "Category": "B",
+      "Desc": "MECHANICAL ENGINEER"
+    },
+    {
+      "Id": 771,
+      "Category": "B",
+      "Desc": "ELECTRICAL ENGINEER"
+    },
+    {
+      "Id": 772,
+      "Category": "B",
+      "Desc": "ELECTRONICS ENGINEER"
+    },
+    {
+      "Id": 773,
+      "Category": "B",
+      "Desc": "AVIATION ENGINEER"
+    },
+    {
+      "Id": 774,
+      "Category": "B",
+      "Desc": "CHEMICAL ENGINEER"
+    },
+    {
+      "Id": 775,
+      "Category": "B",
+      "Desc": "CONSTRUCTION TECHNICIAN"
+    },
+    {
+      "Id": 776,
+      "Category": "B",
+      "Desc": "ELECTRICIAN"
+    },
+    {
+      "Id": 777,
+      "Category": "B",
+      "Desc": "ELECTRONICS"
+    },
+    {
+      "Id": 778,
+      "Category": "B",
+      "Desc": "LANDSCAPING ENGINEER"
+    },
+    {
+      "Id": 779,
+      "Category": "B",
+      "Desc": "GEOLOGIST"
+    },
+    {
+      "Id": 780,
+      "Category": "B",
+      "Desc": "FOREMAN"
+    },
+    {
+      "Id": 781,
+      "Category": "B",
+      "Desc": "MASON / BUILDER/ MARBLE SETTER/ MOSAIC LAYER"
+    },
+    {
+      "Id": 782,
+      "Category": "B",
+      "Desc": "DOMESTIC WORKS"
+    },
+    {
+      "Id": 783,
+      "Category": "B",
+      "Desc": "CAPTAIN"
+    },
+    {
+      "Id": 784,
+      "Category": "B",
+      "Desc": "OFFICER"
+    },
+    {
+      "Id": 785,
+      "Category": "B",
+      "Desc": "SOLDIER"
+    },
+    {
+      "Id": 786,
+      "Category": "B",
+      "Desc": "SERGENT"
+    },
+    {
+      "Id": 787,
+      "Category": "B",
+      "Desc": "POLICEMAN"
+    },
+    {
+      "Id": 788,
+      "Category": "B",
+      "Desc": "BODYGUARD"
+    },
+    {
+      "Id": 789,
+      "Category": "B",
+      "Desc": "SECURITY GUARD"
+    },
+    {
+      "Id": 790,
+      "Category": "B",
+      "Desc": "EDUCATION AND CULTURE"
+    },
+    {
+      "Id": 791,
+      "Category": "B",
+      "Desc": "CHEF"
+    },
+    {
+      "Id": 792,
+      "Category": "B",
+      "Desc": "HOTEL STAFF"
+    },
+    {
+      "Id": 793,
+      "Category": "B",
+      "Desc": "RESTAURANT WORKER"
+    },
+    {
+      "Id": 794,
+      "Category": "B",
+      "Desc": "WAITER"
+    },
+    {
+      "Id": 795,
+      "Category": "B",
+      "Desc": "BARMAN"
+    },
+    {
+      "Id": 796,
+      "Category": "B",
+      "Desc": "COOK"
+    },
+    {
+      "Id": 797,
+      "Category": "B",
+      "Desc": "SUPERMARKET STAFF"
+    },
+    {
+      "Id": 798,
+      "Category": "B",
+      "Desc": "BUTCHER"
+    },
+    {
+      "Id": 799,
+      "Category": "B",
+      "Desc": "GROCER"
+    },
+    {
+      "Id": 800,
+      "Category": "B",
+      "Desc": "BAKER"
+    },
+    {
+      "Id": 801,
+      "Category": "B",
+      "Desc": "INDUSTRY TECHNICIAN"
+    },
+    {
+      "Id": 802,
+      "Category": "B",
+      "Desc": "INDUSTRIAL ENGINEER"
+    },
+    {
+      "Id": 803,
+      "Category": "B",
+      "Desc": "PETROCHEMICAL ENGINEER"
+    },
+    {
+      "Id": 804,
+      "Category": "B",
+      "Desc": "MACHINERY SUPERVISOR"
+    },
+    {
+      "Id": 805,
+      "Category": "B",
+      "Desc": "FACTORY WORKER (LIGHT MANUAL)"
+    },
+    {
+      "Id": 806,
+      "Category": "B",
+      "Desc": "CRAFTSMAN"
+    },
+    {
+      "Id": 807,
+      "Category": "B",
+      "Desc": "SHOE MAKER"
+    },
+    {
+      "Id": 808,
+      "Category": "B",
+      "Desc": "UPHOLSTERER"
+    },
+    {
+      "Id": 809,
+      "Category": "B",
+      "Desc": "GOLDSMITH"
+    },
+    {
+      "Id": 810,
+      "Category": "B",
+      "Desc": "GUNSMITH"
+    },
+    {
+      "Id": 811,
+      "Category": "B",
+      "Desc": "TAILOR"
+    },
+    {
+      "Id": 812,
+      "Category": "B",
+      "Desc": "PRINT WORKER"
+    },
+    {
+      "Id": 813,
+      "Category": "B",
+      "Desc": "DRY CLEANER"
+    },
+    {
+      "Id": 814,
+      "Category": "B",
+      "Desc": "PETROL STATION STAFF"
+    },
+    {
+      "Id": 815,
+      "Category": "B",
+      "Desc": "SPORT TRAINER"
+    },
+    {
+      "Id": 816,
+      "Category": "B",
+      "Desc": "ATHLETE (ON FIELD TRACK)"
+    },
+    {
+      "Id": 817,
+      "Category": "B",
+      "Desc": "LIFE-GUARD"
+    },
+    {
+      "Id": 818,
+      "Category": "B",
+      "Desc": "LEISURE CLUB STAFF"
+    },
+    {
+      "Id": 819,
+      "Category": "B",
+      "Desc": "CINEMA/THEATRE STAFF"
+    },
+    {
+      "Id": 820,
+      "Category": "B",
+      "Desc": "CASINO STAFF"
+    },
+    {
+      "Id": 821,
+      "Category": "B",
+      "Desc": "TELECOMMUNICATIONS ENGINEER"
+    },
+    {
+      "Id": 822,
+      "Category": "B",
+      "Desc": "REPORTER"
+    },
+    {
+      "Id": 823,
+      "Category": "B",
+      "Desc": "DENTAL LABORATORY EMPLOYEE"
+    },
+    {
+      "Id": 824,
+      "Category": "B",
+      "Desc": "VETERINARIAN"
+    },
+    {
+      "Id": 825,
+      "Category": "B",
+      "Desc": "PHYSIOTHERAPIST"
+    },
+    {
+      "Id": 826,
+      "Category": "B",
+      "Desc": "NURSE"
+    },
+    {
+      "Id": 827,
+      "Category": "B",
+      "Desc": "HOSPITAL STAFF"
+    },
+    {
+      "Id": 828,
+      "Category": "B",
+      "Desc": "LABORATORYAND RADIOLOGY"
+    },
+    {
+      "Id": 829,
+      "Category": "B",
+      "Desc": "LAB/X-RAY TECHNICIAN"
+    },
+    {
+      "Id": 830,
+      "Category": "B",
+      "Desc": "BIOLOGIST"
+    },
+    {
+      "Id": 831,
+      "Category": "B",
+      "Desc": "BIOCHEMIST"
+    },
+    {
+      "Id": 832,
+      "Category": "B",
+      "Desc": "POSTMAN"
+    },
+    {
+      "Id": 833,
+      "Category": "B",
+      "Desc": "TRADE AND MARKETING"
+    },
+    {
+      "Id": 834,
+      "Category": "B",
+      "Desc": "TRANSPORT AND FORWARDING"
+    },
+    {
+      "Id": 835,
+      "Category": "B",
+      "Desc": "TAXI DRIVER"
+    },
+    {
+      "Id": 836,
+      "Category": "B",
+      "Desc": "DELIVERY MAN"
+    },
+    {
+      "Id": 837,
+      "Category": "B",
+      "Desc": "SHIP CAPTAIN"
+    },
+    {
+      "Id": 838,
+      "Category": "B",
+      "Desc": "TRUCK DRIVER"
+    },
+    {
+      "Id": 839,
+      "Category": "B",
+      "Desc": "BUS DRIVER"
+    },
+    {
+      "Id": 840,
+      "Category": "B",
+      "Desc": "COMPANY DRIVER"
+    },
+    {
+      "Id": 841,
+      "Category": "B",
+      "Desc": "MECHANIC"
+    },
+    {
+      "Id": 842,
+      "Category": "B",
+      "Desc": "TYRE REPAIR"
+    },
+    {
+      "Id": 843,
+      "Category": "B",
+      "Desc": "SERVICE STATION EMPLOYEE"
+    },
+    {
+      "Id": 844,
+      "Category": "B",
+      "Desc": "WORKSHOP EMPLOYEE"
+    },
+    {
+      "Id": 845,
+      "Category": "B",
+      "Desc": "EXPERT"
+    },
+    {
+      "Id": 846,
+      "Category": "B",
+      "Desc": "PILOT"
+    },
+    {
+      "Id": 847,
+      "Category": "B",
+      "Desc": "AIR HOSTESS"
+    },
+    {
+      "Id": 848,
+      "Category": "B",
+      "Desc": "STEWARD"
+    },
+    {
+      "Id": 849,
+      "Category": "B",
+      "Desc": "PORT STAFF"
+    },
+    {
+      "Id": 850,
+      "Category": "B",
+      "Desc": "PORTER"
+    },
+    {
+      "Id": 851,
+      "Category": "B",
+      "Desc": "JANITOR"
+    },
+    {
+      "Id": 852,
+      "Category": "B",
+      "Desc": "Archaeologist"
+    },
+    {
+      "Id": 853,
+      "Category": "B",
+      "Desc": "JAILER"
+    },
+    {
+      "Id": 854,
+      "Category": "B",
+      "Desc": "SURGEON"
+    },
+    {
+      "Id": 855,
+      "Category": "B",
+      "Desc": "TECHNICIAN"
+    },
+    {
+      "Id": 856,
+      "Category": "B",
+      "Desc": "CLEANER"
+    },
+    {
+      "Id": 857,
+      "Category": "B",
+      "Desc": "DOOR KEEPER"
+    },
+    {
+      "Id": 858,
+      "Category": "B",
+      "Desc": "CAR PAINTER"
+    },
+    {
+      "Id": 859,
+      "Category": "B",
+      "Desc": "MANUFACTURER"
+    },
+    {
+      "Id": 860,
+      "Category": "B",
+      "Desc": "PARAMEDIC DRIVER"
+    },
+    {
+      "Id": 861,
+      "Category": "C",
+      "Desc": "PLANTER/MACHINE OPERATOR"
+    },
+    {
+      "Id": 862,
+      "Category": "C",
+      "Desc": "FARM LABOURER"
+    },
+    {
+      "Id": 863,
+      "Category": "C",
+      "Desc": "FISHERMAN"
+    },
+    {
+      "Id": 864,
+      "Category": "C",
+      "Desc": "BEEKEEPER"
+    },
+    {
+      "Id": 865,
+      "Category": "C",
+      "Desc": "ARTS"
+    },
+    {
+      "Id": 866,
+      "Category": "C",
+      "Desc": "CONSTRUCTION"
+    },
+    {
+      "Id": 867,
+      "Category": "C",
+      "Desc": "SCAFFOLDER"
+    },
+    {
+      "Id": 868,
+      "Category": "C",
+      "Desc": "HOTELS - RESTAURANT - FOOD"
+    },
+    {
+      "Id": 869,
+      "Category": "C",
+      "Desc": "WELDER"
+    },
+    {
+      "Id": 870,
+      "Category": "C",
+      "Desc": "CARPENTER"
+    },
+    {
+      "Id": 871,
+      "Category": "C",
+      "Desc": "BLACKSMITH"
+    },
+    {
+      "Id": 872,
+      "Category": "C",
+      "Desc": "CEMENT FACTORY WORKER"
+    },
+    {
+      "Id": 873,
+      "Category": "C",
+      "Desc": "SOUND TECHNICIAN"
+    },
+    {
+      "Id": 874,
+      "Category": "C",
+      "Desc": "IRON WORKER"
+    },
+    {
+      "Id": 875,
+      "Category": "C",
+      "Desc": "LEISURE- TOURISM - SPORTS"
+    },
+    {
+      "Id": 876,
+      "Category": "C",
+      "Desc": "MEDIA AND ADVERTISING"
+    },
+    {
+      "Id": 877,
+      "Category": "C",
+      "Desc": "MEDICAL AND PARAMEDICAL"
+    },
+    {
+      "Id": 878,
+      "Category": "C",
+      "Desc": "AMBULANCE DRIVER"
+    },
+    {
+      "Id": 879,
+      "Category": "C",
+      "Desc": "DRIVING INSTRUCTOR"
+    },
+    {
+      "Id": 880,
+      "Category": "C",
+      "Desc": "SAILOR"
+    },
+    {
+      "Id": 881,
+      "Category": "C",
+      "Desc": "CATTLE DEALER"
+    },
+    {
+      "Id": 882,
+      "Category": "C",
+      "Desc": "PLUMBER"
+    },
+    {
+      "Id": 883,
+      "Category": "D",
+      "Desc": "VALLET"
+    },
+    {
+      "Id": 884,
+      "Category": "D",
+      "Desc": "ARMY"
+    },
+    {
+      "Id": 885,
+      "Category": "D",
+      "Desc": "FIREFIGHTER"
+    },
+    {
+      "Id": 886,
+      "Category": "D",
+      "Desc": "AGRICULTURE AND FARMING"
+    },
+    {
+      "Id": 887,
+      "Category": "D",
+      "Desc": "STUNT MAN"
+    },
+    {
+      "Id": 888,
+      "Category": "D",
+      "Desc": "QUARRYMAN"
+    },
+    {
+      "Id": 889,
+      "Category": "D",
+      "Desc": "ARMED FORCES PERSONNEL"
+    },
+    {
+      "Id": 890,
+      "Category": "D",
+      "Desc": "FIREMAN"
+    },
+    {
+      "Id": 891,
+      "Category": "D",
+      "Desc": "INDUSTRY"
+    },
+    {
+      "Id": 892,
+      "Category": "D",
+      "Desc": "FACTORY WORKER (HEAVY MANUAL)"
+    },
+    {
+      "Id": 893,
+      "Category": "D",
+      "Desc": "SMELTER"
+    },
+    {
+      "Id": 894,
+      "Category": "D",
+      "Desc": "CARPENTER (HEAVY MACHINERY)"
+    },
+    {
+      "Id": 895,
+      "Category": "D",
+      "Desc": "TANNER"
+    },
+    {
+      "Id": 896,
+      "Category": "D",
+      "Desc": "SPORTSMAN"
+    },
+    {
+      "Id": 897,
+      "Category": "D",
+      "Desc": "DYNAMITER"
+    },
+    {
+      "Id": 898,
+      "Category": "D",
+      "Desc": "MINER"
+    },
+    {
+      "Id": 899,
+      "Category": "D",
+      "Desc": "DOCTOR"
+    },
+    {
+      "Id": 900,
+      "Category": "B",
+      "Desc": "FARMER"
+    },
+    {
+      "Id": 901,
+      "Category": "B",
+      "Desc": "RIDER"
+    },
+    {
+      "Id": 902,
+      "Category": "B",
+      "Desc": "PATHOLOGIST"
+    },
+    {
+      "Id": 903,
+      "Category": "B",
+      "Desc": "PREACHER"
+    }
+  ]
+}

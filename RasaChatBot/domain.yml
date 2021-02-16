@@ -12,16 +12,29 @@ intents:
 - affirm
 - deny
 - bot_challenge
-- digital_policy
 - date
+- number
+- email
+- policy_inquire
+- digital_policy
 entities:
+- policyname
 - gender
-- digital
-- cnic
-- mobile
-- cdate
-- dob
+- lifepolicy
+- healthpolicy
 slots:
+  Digitalpolicy:
+    type: unfeaturized
+  HCArange:
+    type: unfeaturized
+  Instapolicy:
+    type: unfeaturized
+  LTADeclarationAgree:
+    type: bool
+  LTApolicy:
+    type: unfeaturized
+  Telepolicy:
+    type: unfeaturized
   accidentdate:
     type: unfeaturized
   address:
@@ -36,8 +49,6 @@ slots:
     type: unfeaturized
   cnic:
     type: unfeaturized
-  digital:
-    type: unfeaturized
   dischargedate:
     type: unfeaturized
   disease:
@@ -50,65 +61,85 @@ slots:
     type: unfeaturized
   formfill:
     type: unfeaturized
-  gender:
+  healthlife:
     type: unfeaturized
   hospital:
     type: unfeaturized
+  income:
+    type: unfeaturized
   insuredname:
     type: unfeaturized
+  isDigital:
+    type: bool
+  isLTA:
+    type: bool
+  isLTApolicyExists:
+    type: bool
   lname:
+    type: unfeaturized
+  lta_SumRangeMax:
+    type: unfeaturized
+  lta_SumRangeMin:
+    type: unfeaturized
+  lta_TermRange:
     type: unfeaturized
   mobile:
     type: unfeaturized
-  province:
+  mobile4claim:
+    type: unfeaturized
+  occupation:
+    type: unfeaturized
+  pakResident:
+    type: unfeaturized
+  policyname:
+    type: unfeaturized
+  policytype:
     type: unfeaturized
   quantity:
+    type: unfeaturized
+  sumInsured:
+    type: unfeaturized
+  termYears:
     type: unfeaturized
   time:
     type: unfeaturized
 responses:
   utter_greet:
-  - text: Hey! welcome to TPL's Navimate , I am your assistant
+  - text: Hey! welcome to TPL's InsureMate , I am your assistant , I can help you
+      with Health & Life Insurance Products , Policies and Claims ?
+  utter_ask_healthlife:
+  - buttons:
+    - payload: Life
+      title: Life
+    - payload: Health
+      title: Health
+    text: Please Select the Insurance section you are interested in .
+  utter_ask_policytype:
+  - buttons:
+    - payload: Digital
+      title: Digital
+    - payload: Instant
+      title: Instant
+    - payload: TeleHealth
+      title: TeleHealth
+    text: Please Select the policy type you are interested in .
   utter_greetname:
   - text: So, How can I help you ! {fname}
   utter_goodbye:
-  - text: Take care , we will get back to you soon on your contact {mobile}. Good
-      Bye
+  - text: Take care , we will get back to you soon on your contact number . Good Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_ask_confirmpolicy:
-  - text: You want to by the {digital} policy ? {fname}
+  - text: You want to buy the {policyname} policy ? {fname}
   utter_ask_fname:
   - text: can you please type in your First name please ?
   utter_ask_lname:
   - text: can you please type in your Last name please ?
   utter_ask_cnic:
-  - text: Your CNIC please (in format like 42101-34566213-9) ?
+  - text: Your CNIC please (in format like 42101-34566213-9 or 42101345662139) ?
   utter_ask_city:
   - text: City you belong to ?
-  utter_ask_province:
-  - buttons:
-    - payload: '/inform{"province": "Sindh"}'
-      title: Sindh
-    - payload: '/inform{"province": "Punjab"}'
-      title: Punjab
-    - payload: '/inform{"province": "Baluchistan"}'
-      title: Baluchistans
-    - payload: '/inform{"province": "KPK"}'
-      title: KPK
-    - payload: '/inform{"province": "GB"}'
-      title: Gilgit Baltistan
-    - payload: '/inform{"province": "AJK"}'
-      title: Azak Kashmir
-    text: Province you belong to ?
-  utter_ask_gender:
-  - buttons:
-    - payload: '/inform{"gender": "Male"}'
-      title: Male
-    - payload: '/inform{"gender": "Female"}'
-      title: Female
-    text: are you Male or Female ?
-  utter_ask_digital:
+  utter_ask_Digitalpolicy:
   - buttons:
     - payload: Mosquito
       title: Mosquito
@@ -116,23 +147,84 @@ responses:
       title: Water
     - payload: Hybrid
       title: Hybrid
-    text: Please select the policy you are interested in ?
+    text: Please select the Digital policy you are interested in ?
+  utter_ask_Instapolicy:
+  - buttons:
+    - payload: Shehsawar
+      title: Shehsawar
+    - payload: Bodyguard
+      title: Bodyguard
+    - payload: HCA5K
+      title: Hospital Cash Assitance
+    text: Please select the Instant policy you are interested in ?
+  utter_ask_Telepolicy:
+  - buttons:
+    - payload: Sahulat
+      title: Sahulat
+    text: Please select the Tele Health policy you are interested in ?
+  utter_ask_LTApolicy:
+  - buttons:
+    - payload: Level Term Assurance
+      title: Level Term Assurance
+    text: Please select the Life policy you are interested in ?
+  utter_ask_HCArange:
+  - buttons:
+    - payload: Yes
+      title: HCA with 5000 PKR limit
+    - payload: No
+      title: HCA with 10,000 PKR limit
+    text: Please infrom if you want to go with HCA limit of 5000 PKR or 10,000 PKR?
+  utter_ask_claimFile:
+  - buttons:
+    - payload: Yes
+      title: File a Claim
+    - payload: No
+      title: Want Information & Details for claims
+    text: Do you want to File the claim OR want to make an Inquiry against your Initiated
+      Claims(s) ?
+  utter_inform_otpsend:
+  - text: We have sent you the OTP on your mobile number , kindly enter below when
+      received !
+  utter_inform_otpNotsend:
+  - text: OTP Sending Failed!
   utter_Mosquitolink:
   - text: Mosquito Shield - https://www.tpllife.com/digital-insurance/mosquito-shield/
   utter_Waterlink:
   - text: Water Shield - https://www.tpllife.com/digital-insurance/water-shield/
   utter_Hyperlink:
   - text: Hyper Shield - https://www.tpllife.com/digital-insurance/hyper-shield/
+  utter_Shehsawarlink:
+  - text: Shehsawar - https://www.tpllife.com/digital-insurance/shehsawar/
+  utter_Bodyguardlink:
+  - text: Bodyguard Shield - https://www.tpllife.com/digital-insurance/bodyguard/
   utter_ask_mobile:
   - text: Please type your cell number (in format 0300-34560000)?
-  utter_ask_disease:
+  utter_ask_mobile4claim:
+  - text: Please type your Registered cell number for claim processing (in format
+      0300-34560000)?
+  utter_ask_diseaseMosquito:
   - buttons:
     - payload: Yes
       title: Yes
     - payload: No
       title: No
-    text: Are you currently suffering from malaria, Dengue, Chikungunya, Yellow Fever
-      ?
+    text: Are you currently suffering from Malaria, Dengue, Chikungunya, Yellow Fever  ?
+  utter_ask_diseaseWater:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Are you currently suffering from Cholera, Hepatitis, A&E, Typhoid, Diarrhea,
+      Naegleria Fowleri   ?
+  utter_ask_diseaseHyper:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Are you currently suffering from Malaria, Dengue, Chikungunya, Yellow Fever,
+      Cholera, Hepatitis, A&E, Typhoid, Diarrhea, Naegleria Fowleri ?
   utter_ask_hospital:
   - buttons:
     - payload: Yes
@@ -147,34 +239,55 @@ responses:
       title: Yes
     - payload: No
       title: No
-    text: Would you like to fill the online form yourself or would like me to fill
-      it for you?
+    text: Would you like Me to fill the form for you ?
+  utter_consent:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Please read the document at the link http://files.tpllife.com/cdn.his/file/MosquitoShieldTC.pdf
+      and select 'Yes' if you agree else 'No'
+  utter_LTAconsent:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Please read the document at the link http://files.tpllife.com/cdn.his/file/LTADeclaration.pdf
+      and select 'Yes' if you agree else 'No'
   utter_ask_dob:
-  - text: What is you date of birth in format (Year/Month/Day)?
+  - text: What is you date of birth in format (Day/Month/Year)?
   utter_ask_cdate:
-  - text: What is you CNIC issue date (Year/Month/Day)?
+  - text: What is you CNIC issue date (Day/Month/Year)?
   utter_ask_address:
   - text: Your current home address ?
   utter_ask_email:
   - text: Please type your Email address ?
-  utter_ask_quantity:
-  - text: Number of policies you want to purchase ? \n (type a Number)
-  utter_slots_values:
-  - text: "You've submitted the following information:\n - First Name: {fname}\n -\
-      \ Last Name: {lname}\n - Gender: {gender}\n - City: {city}\n - CNIC: {cnic}\n\
-      \ - DoB: {dob}\n - CNIC Date: {cdate}\n - Mobile: {mobile}\n - Address: {address}\n\
-      \ - E-mail: {email}\n - Province: {province}\n - Quantity: {quantity}"
-  utter_slots_values_claims:
-  - text: "You've submitted the following information:\n - Insured Name: {insuredname}\n\
-      \ - Discharge Date: {dischargedate}\n - Accident Date: {accidentdate}\n - CNIC:\
-      \ {cnic}\n - Claim Amount: {claimamount}"
-  utter_insurance_values:
-  - text: "Want to know more about our services ? Type the Insurance name or Number\
-      \ Selection:\n * 1 - Life Insurance \n * 2 - Car Insurance \n * 3 - Mobile Insurance"
+  utter_ask_pakResident:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Are you resident of Pakistan ?
+  utter_ask_occupation:
+  - text: Your Occupation please ?
+  utter_ask_income:
+  - text: Please type your monthly income in digits
+  utter_ask_termYears:
+  - text: Type policy term in years between {lta_TermRange} Years
+  utter_ask_sumInsured:
+  - text: Please type Total Sum Insured in digits {lta_SumRangeMin} PKR to {lta_SumRangeMax}
+      PKR
   utter_no_worries:
   - text: No problem :)
+  utter_visit_tplweb:
+  - text: Kindly visit https://www.tpllife.com/digital-insurance/ to apply for the
+      TPL Digital products :)
   utter_ask_continue:
-  - text: Sorry, I don't quite understand. Do you want to continue?
+  - text: Sorry, I don't quite understand. Do you want to continue ?
+  - text: Sorry, Can you please repharase if you want to continue ?
   utter_ask_insuredname:
   - text: Name of the insured ?
   utter_ask_accidentdate:
@@ -185,9 +298,15 @@ responses:
   - text: Enter Claim Amount in PKR (only digits)
   utter_ask_card:
   - text: Enter Card Number
-  utter_help:
-  - text: "I can help you with your TPL Insurance related matters below . \nYou can\
-      \ ask me things like: \n- Buy a new policy? \n- Start a Claim process"
+  utter_not_eligible:
+  - text: Sorry {fname}, you are not eligible for the policy .
+  utter_not_eligible_pakResident:
+  - text: Sorry {fname}, you are not eligible for the policy , as this coverage is
+      only available for Pakistani Residents .
+  utter_feedback:
+  - text: Please would you like to leave a comment below , to further improve our
+      process . Thank you
+  - text: Please type in your feedback , to help improve our process . Thank you
 actions:
 - utter_greet
 - utter_goodbye
@@ -196,35 +315,65 @@ actions:
 - utter_ask_lname
 - utter_ask_cnic
 - utter_ask_city
-- utter_ask_province
-- utter_ask_gender
 - utter_ask_mobile
 - utter_ask_dob
 - utter_ask_cdate
 - utter_ask_address
 - utter_ask_email
-- utter_ask_quantity
-- utter_slots_values
-- utter_insurance_values
 - utter_no_worries
 - utter_ask_continue
 - utter_ask_insuredname
 - utter_ask_accidentdate
 - utter_ask_dischargedate
 - utter_ask_claimamount
-- utter_help
-- utter_slots_values_claims
 - utter_ask_card
-- utter_ask_digital
 - utter_greetname
 - utter_ask_confirmpolicy
 - utter_Mosquitolink
 - utter_Waterlink
 - utter_Hyperlink
-- utter_ask_disease
 - utter_ask_hospital
 - utter_ask_formfill
 - action_check_digital
+- action_disease_question
+- action_check_otp
+- action_send_otp
+- action_check_ifdigital
+- action_check_ifLTA
+- action_show_LTA_info
+- action_generate_LTApolicy
+- action_checkLTAConsent
+- utter_consent
+- utter_not_eligible
+- utter_feedback
+- utter_ask_diseaseMosquito
+- utter_ask_diseaseWater
+- utter_ask_diseaseHyper
+- utter_ask_mobile4claim
+- utter_ask_claimFile
+- utter_inform_otpsend
+- utter_inform_otpNotsend
+- utter_ask_Instapolicy
+- utter_ask_Telepolicy
+- utter_ask_HCArange
+- utter_Shehsawarlink
+- utter_Bodyguardlink
+- utter_ask_healthlife
+- utter_ask_policytype
+- utter_ask_Digitalpolicy
+- utter_ask_LTApolicy
+- utter_ask_pakResident
+- utter_ask_occupation
+- utter_ask_income
+- utter_ask_termYears
+- utter_ask_sumInsured
+- utter_LTAconsent
+- utter_not_eligible_pakResident
+- utter_visit_tplweb
 forms:
-- common_form
-- policy_form
+- common_data_form
+- policy_data_form
+- policy_select_form
+- claim_data_form
+- otp_data_form
+- lta_data_form

@@ -1,0 +1,665 @@
+{
+    "City": [
+
+        {
+            "Id": 1,
+            "Name": "Attock",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 2,
+            "Name": "Abbotabad",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 3,
+            "Name": "Aliabad",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 4,
+            "Name": "Bahawalpur",
+            "Province": "Punjab",
+            "Region": "Central - S"
+        },
+        {
+            "Id": 5,
+            "Name": "Booni",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 6,
+            "Name": "Burewala",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 7,
+            "Name": "Chakwal",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 8,
+            "Name": "Chichawatni",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 9,
+            "Name": "Chishtian",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 10,
+            "Name": "D.I Khan ",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 11,
+            "Name": "Digri",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 12,
+            "Name": "Faislabad",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 13,
+            "Name": "Garamchashma",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 14,
+            "Name": "Gilgit",
+            "Province": "FATA",
+            "Region": "North"
+        },
+        {
+            "Id": 15,
+            "Name": "Gojra (Tooba Taksingh)",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 16,
+            "Name": "Gujranwala",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 17,
+            "Name": "Gujrat",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 18,
+            "Name": "Gupis",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 19,
+            "Name": "Hafizabad ",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 20,
+            "Name": "Hasilpur",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 21,
+            "Name": "Hyderabad",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 22,
+            "Name": "Islamabad ",
+            "Province": "Punjab",
+            "Region": "North"
+        },
+        {
+            "Id": 23,
+            "Name": "Jacobabad",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 24,
+            "Name": "Jehlum/P.D Khan ",
+            "Province": "Punjab",
+            "Region": "North"
+        },
+        {
+            "Id": 25,
+            "Name": "Jhang",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 26,
+            "Name": "JHELUM",
+            "Province": "Punjab",
+            "Region": "North"
+        },
+        {
+            "Id": 27,
+            "Name": "Kandkhot",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 28,
+            "Name": "Karachi",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 29,
+            "Name": "Kasur ",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 30,
+            "Name": "Khairpur Mires",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 31,
+            "Name": "Khanewal",
+            "Province": "Punjab",
+            "Region": "South"
+        },
+        {
+            "Id": 32,
+            "Name": "Kot Adu",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 33,
+            "Name": "Lahore",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 34,
+            "Name": "Larkana",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 35,
+            "Name": "Layyah",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 36,
+            "Name": "Lodhran ",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 37,
+            "Name": "Mandi Bahauddin",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 38,
+            "Name": "Mastuj",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 39,
+            "Name": "Mian Channu ",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 40,
+            "Name": "MianWali",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 41,
+            "Name": "Mirpur Khas",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 42,
+            "Name": "Mirpur Mathelo",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 43,
+            "Name": "Mithi",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 44,
+            "Name": "Multan",
+            "Province": "Punjab",
+            "Region": "Central - S"
+        },
+        {
+            "Id": 45,
+            "Name": "Naushahro Feroz",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 46,
+            "Name": "Nawabshah",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 47,
+            "Name": "Okara",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 48,
+            "Name": "Pakpattan",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 49,
+            "Name": "PanoAKil",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 51,
+            "Name": "Peshawar",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 52,
+            "Name": "Qadirpur Rawan",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 53,
+            "Name": "Quetta",
+            "Province": "Balochistan",
+            "Region": "South"
+        },
+        {
+            "Id": 54,
+            "Name": "Rahim Yar Khan",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 55,
+            "Name": "Rawalpindi",
+            "Province": "Punjab",
+            "Region": "North"
+        },
+        {
+            "Id": 56,
+            "Name": "Sahiwal",
+            "Province": "Punjab",
+            "Region": "Central - S"
+        },
+        {
+            "Id": 57,
+            "Name": "Sargodha",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 58,
+            "Name": "Shiekhupura",
+            "Province": "Punjab",
+            "Region": null
+        },
+        {
+            "Id": 59,
+            "Name": "Shikarpur",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 60,
+            "Name": "Shoghore",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 61,
+            "Name": "Sialkot",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 62,
+            "Name": "Singal",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 63,
+            "Name": "Sukkur",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 64,
+            "Name": "Tando Adam ",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 65,
+            "Name": "Tandoallahyar ",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 66,
+            "Name": "Tokhrow",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 67,
+            "Name": "Turbat",
+            "Province": "Balochistan",
+            "Region": "South"
+        },
+        {
+            "Id": 68,
+            "Name": "Umer Kot",
+            "Province": "Sindh",
+            "Region": "Central - S"
+        },
+        {
+            "Id": 69,
+            "Name": "Vehari",
+            "Province": "Punjab",
+            "Region": "South"
+        },
+        {
+            "Id": 70,
+            "Name": "Wah Cantt",
+            "Province": "Punjab",
+            "Region": "South"
+        },
+        {
+            "Id": 71,
+            "Name": "Dera Ghazi Khan",
+            "Province": "Punjab",
+            "Region": "South"
+        },
+        {
+            "Id": 72,
+            "Name": "Thatta",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 73,
+            "Name": "Mardan",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 74,
+            "Name": "Mirpur AzadKashmir",
+            "Province": "Azad Kashmir",
+            "Region": "North"
+        },
+        {
+            "Id": 75,
+            "Name": "Muzaffarabad",
+            "Province": "Azad Kashmir",
+            "Region": "North"
+        },
+        {
+            "Id": 76,
+            "Name": "Umarkot",
+            "Province": "Sindh",
+            "Region": "Central - S"
+        },
+        {
+            "Id": 77,
+            "Name": "Nankana Sahib",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 78,
+            "Name": "Attock",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 79,
+            "Name": "Muzaffargarh",
+            "Province": "Punjab",
+            "Region": "South"
+        },
+        {
+            "Id": 80,
+            "Name": "Wazirabad",
+            "Province": "Punjab",
+            "Region": "South"
+        },
+        {
+            "Id": 81,
+            "Name": "Shahdadkot",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 82,
+            "Name": "Shorkot",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 83,
+            "Name": "Haroonabad",
+            "Province": "Punjab",
+            "Region": "South"
+        },
+        {
+            "Id": 84,
+            "Name": "Ranipur",
+            "Province": "Sindh",
+            "Region": "North"
+        },
+        {
+            "Id": 85,
+            "Name": "Jampur",
+            "Province": "Punjab",
+            "Region": "Central - S"
+        },
+        {
+            "Id": 86,
+            "Name": "Lasbela",
+            "Province": "Balochistan",
+            "Region": "South"
+        },
+        {
+            "Id": 87,
+            "Name": "Haripur",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 88,
+            "Name": "Daharaki",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 89,
+            "Name": "Ghotki",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 90,
+            "Name": "Sadiqabad",
+            "Province": "Punjab",
+            "Region": "Central - S"
+        },
+        {
+            "Id": 91,
+            "Name": "Sharak Pur",
+            "Province": "Punjab",
+            "Region": "North"
+        },
+        {
+            "Id": 92,
+            "Name": "Daska",
+            "Province": "Punjab",
+            "Region": "North"
+        },
+        {
+            "Id": 93,
+            "Name": "Tharparkar",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 94,
+            "Name": "Ahmadpur Sharqia",
+            "Province": "Punjab",
+            "Region": "North"
+        },
+        {
+            "Id": 95,
+            "Name": "Kotli",
+            "Province": "Azad Kashmir",
+            "Region": "North"
+        },
+        {
+            "Id": 96,
+            "Name": "Dadu",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 97,
+            "Name": "Khanpur",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 98,
+            "Name": "Bhakkar",
+            "Province": "Punjab",
+            "Region": "Central - S"
+        },
+        {
+            "Id": 99,
+            "Name": "Swabi",
+            "Province": "Punjab",
+            "Region": "North"
+        },
+        {
+            "Id": 100,
+            "Name": "Bahawalnagar",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 101,
+            "Name": "Malakand",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 102,
+            "Name": "Badin",
+            "Province": "Sindh",
+            "Region": "South"
+        },
+        {
+            "Id": 103,
+            "Name": "Chitral",
+            "Province": "Khyber Pakhtunkhwa",
+            "Region": "North"
+        },
+        {
+            "Id": 104,
+            "Name": "Narowal",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 105,
+            "Name": "Khushab",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 106,
+            "Name": "CHACHRO",
+            "Province": "Sindh",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 107,
+            "Name": "XZAE",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 1107,
+            "Name": "Patoki",
+            "Province": "Punjab",
+            "Region": "Central - N"
+        },
+        {
+            "Id": 1108,
+            "Name": "Bahawalpur",
+            "Province": "Punjab",
+            "Region": "Central - S"
+        },
+        {
+            "Id": 1109,
+            "Name": "Virginia",
+            "Province": null,
+            "Region": null
+        },
+        {
+            "Id": 1110,
+            "Name": "California",
+            "Province": null,
+            "Region": null
+        }
+    ]
+}
