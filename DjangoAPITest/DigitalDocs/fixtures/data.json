@@ -1,0 +1,64 @@
+[
+    {
+      "model": "DigitalDocs.folders",
+      "fields": {
+        "FolderName": "CustomerFeedback",
+        "ParentFolderId": null
+      }
+    },
+    {
+      "model": "DigitalDocs.folders",
+      "fields": {
+        "FolderName": "Suggestions",
+        "ParentFolderId": null
+      }
+    },
+
+    {
+        "model": "DigitalDocs.topics",
+        "fields": {
+          "TopicName": "Spekilove",
+          "Folder": 1
+        }
+      },
+      {
+        "model": "DigitalDocs.topics",
+        "fields": {
+          "TopicName": "Cricket",
+          "Folder": 1
+        }
+      },
+
+      {
+        "model": "DigitalDocs.topics",
+        "fields": {
+          "TopicName": "Politics",
+          "Folder": 2
+        }
+      },
+
+      {
+        "model": "DigitalDocs.documents",
+        "fields": {
+          "DocName": "Doc #1",
+          "Topic": 1
+        }
+      },
+
+      {
+        "model": "DigitalDocs.documents",
+        "fields": {
+          "DocName": "Doc #2",
+          "Topic": 2
+        }
+      },
+      {
+        "model": "DigitalDocs.documents",
+        "fields": {
+          "DocName": "Doc #3",
+          "Topic": 1
+        }
+      }
+
+
+  ]
